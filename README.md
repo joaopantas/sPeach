@@ -1,3 +1,0 @@
-# ssPeach
-bolas
-bolas2
