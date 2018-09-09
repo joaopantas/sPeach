@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_profile"
+        android:checked="true"
+        android:icon="@mipmap/ic_profile"
+        android:title="@string/tab1"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_feed"
+        android:checked="false"
+        android:icon="@mipmap/ic_feed"
+        android:title="@string/tab2"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_deepness"
+        android:checked="false"
+        android:icon="@mipmap/ic_deepness"
+        android:title="@string/tab3"
+        app:showAsAction="ifRoom" />
+</menu>
