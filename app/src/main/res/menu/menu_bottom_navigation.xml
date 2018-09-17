@@ -4,19 +4,19 @@
     <item
         android:id="@+id/action_profile"
         android:checked="true"
-        android:icon="@mipmap/ic_profile"
+        android:icon="@mipmap/ic_menu"
         android:title="@string/tab1"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_feed"
         android:checked="false"
-        android:icon="@mipmap/ic_feed"
+        android:icon="@mipmap/ic_deepness"
         android:title="@string/tab2"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_deepness"
         android:checked="false"
-        android:icon="@mipmap/ic_deepness"
+        android:icon="@mipmap/ic_chats"
         android:title="@string/tab3"
         app:showAsAction="ifRoom" />
 </menu>

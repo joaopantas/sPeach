@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Bottom Navigation</string>
 
-    <string name="tab1">PROFILE</string>
+    <string name="tab1">MENU</string>
     <string name="tab2">FEED</string>
-    <string name="tab3">DEEPNESS</string>
+    <string name="tab3">CHATS</string>
 
 </resources>
