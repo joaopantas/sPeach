@@ -6,7 +6,15 @@
     <string name="string_speach2" />
     <string name="textview">TextView</string>
     <string name="speach">sPeach</string>
-    <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="email">Email</string>
     <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="forgot_account">Forgot Account?</string>
+    <string name="forgot_account">Forgot Account?</string>
+    <string name="editText">Name</string>
+    <string name="edit_e_mail">E-mail</string>
+    <string name="edit_password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="code">Code</string>
 </resources>
