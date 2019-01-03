@@ -24,6 +24,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONException;
@@ -32,13 +34,16 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import MAIN_CLASSES.User;
+
 public class LoginActivity extends AppCompatActivity {
 
     LoginButton loginButton;
     CallbackManager callbackManager;
     ArrayList<String> Friends;
     private FirebaseAuth mAuth;
-    String name, email;
+    String name, email, userkey;
+    DatabaseReference mRef;
 
 
     @Override
@@ -50,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginfacebook);
         callbackManager = CallbackManager.Factory.create();
         mAuth = FirebaseAuth.getInstance();
+        mRef = FirebaseDatabase.getInstance().getReference().child("Users");
+
         //check if user is already logged in
         if (mAuth.getCurrentUser() != null) {
             startActivity(new Intent(this, MainActivity.class));
@@ -100,6 +107,10 @@ public class LoginActivity extends AppCompatActivity {
                                 // Name, email address, and profile photo Url
                                 name = user.getDisplayName();
                                 email = user.getEmail();
+
+                                //Create user in firebase database
+                                userkey = mRef.push().getKey();
+                                mRef.child(userkey).setValue(user);
 
                                 // The user's ID, unique to the Firebase project. Do NOT use this value to
                                 // authenticate with your backend server, if you have one. Use

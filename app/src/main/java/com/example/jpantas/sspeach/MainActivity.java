@@ -111,11 +111,11 @@ public class MainActivity extends AppCompatActivity {
         });
         */
        logout= findViewById(R.id.logout);
+       logout.setEnabled(true);
        logout.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                FirebaseAuth.getInstance().signOut();
-
            }
        });
         setupViewPager(viewPager);
