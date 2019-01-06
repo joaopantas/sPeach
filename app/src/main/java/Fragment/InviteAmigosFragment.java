@@ -36,7 +36,6 @@ public class InviteAmigosFragment extends Fragment {
     DatabaseReference mRef;
     private List<User> users;
     int row_index = -1;
-    Button inviteBtn;
     RecyclerView mRecyclerView;
     String Userkey;
 
@@ -56,17 +55,6 @@ public class InviteAmigosFragment extends Fragment {
         mRecyclerView = rootView.findViewById(R.id.inviteamigos_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        inviteBtn = rootView.findViewById(R.id.inviteBtn);
-
-        inviteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //TODO send invite to Userkey
-
-            }
-        });
 
         return rootView;
     }
@@ -99,14 +87,12 @@ public class InviteAmigosFragment extends Fragment {
                     public void onClick(View v) {
 
                         if (row_index == position) {
-                            inviteBtn.setEnabled(false);
-                            inviteBtn.setVisibility(View.INVISIBLE);
+
                             //groups.get(row_index).getEmail();
                             row_index=-1;
                         }
                         else{
-                            inviteBtn.setEnabled(true);
-                            inviteBtn.setVisibility(View.VISIBLE);
+
                             Userkey = getRef(row_index).getKey();
                             row_index = position;
                         }

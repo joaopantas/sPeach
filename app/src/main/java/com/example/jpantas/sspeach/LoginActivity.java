@@ -24,8 +24,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONException;
@@ -66,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
         //after logging out
-        else if (intent.getStringExtra("code").equals("logout")){
+        else if (TextUtils.equals(intent.getStringExtra("code"), "logout")) {
             loginButton.performClick();
         }
         loginButton.setReadPermissions(Arrays.asList("email", "public_profile"));
@@ -114,29 +117,40 @@ public class LoginActivity extends AppCompatActivity {
                             email = user.getEmail();
                             uid = user.getUid();
 
-                            Log.d("NAMASTE uid", mRef.child(uid).toString() + "" + mRef.child(uid).getKey() + "" + mRef.child(uid).getRef());
+                            Log.d("NAMASTE name", name);
+                            Log.d("NAMASTE email", email);
+                            Log.d("NAMASTE", name + " " + email + " " + email.split("@")[0]);
+
+                            //Log.d("NAMASTE uid", mRef.child(uid).toString() + " 1: " + mRef.child(uid).getKey() + " 2: " + mRef.child(uid).getRef());
+
                             if (user != null) {
                                 //if user already exists in firebase DB
-                                if(mRef.child(uid).toString() != null){
-                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                    finish();
-                                }else{
+                                mRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        if (dataSnapshot.exists()) {
+                                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                            finish();
+                                        } else {
+                                            //Create user in firebase database
+                                            DBuser.setEmail(email);
+                                            DBuser.setName(name);
+                                            DBuser.setDevice_token(FirebaseInstanceId.getInstance().getToken().toString());
+                                            mRef.child(uid).setValue(DBuser);
 
-                                    Log.d("NAMASTE", name + " " + email + " " + email.split("@")[0]);
+                                            // The user's ID, unique to the Firebase project. Do NOT use this value to
+                                            // authenticate with your backend server, if you have one. Use
+                                            // FirebaseUser.getIdToken() instead.
+                                            Intent intent = new Intent(LoginActivity.this, InviteActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                    //Create user in firebase database
-                                    DBuser.setEmail(email);
-                                    DBuser.setName(name);
-                                    DBuser.setDevice_token(FirebaseInstanceId.getInstance().getToken().toString());
-                                    mRef.child(uid).setValue(DBuser);
-
-                                    // The user's ID, unique to the Firebase project. Do NOT use this value to
-                                    // authenticate with your backend server, if you have one. Use
-                                    // FirebaseUser.getIdToken() instead.
-                                    Intent intent = new Intent(LoginActivity.this, InviteActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
+                                    }
+                                });
                             }
                         } else {
                             // If sign in fails, display a message to the user.

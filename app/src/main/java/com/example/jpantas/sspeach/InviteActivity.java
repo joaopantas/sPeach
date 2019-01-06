@@ -23,8 +23,8 @@ public class InviteActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_invite);
+        mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-
 
         nextBtn = findViewById(R.id.next);
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +36,8 @@ public class InviteActivity extends AppCompatActivity {
         });
 
     }
+
+    //TODO recycler view with users to be invited
 
 
 }
