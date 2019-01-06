@@ -86,7 +86,6 @@ public class InviteAmigosFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, final int position, @NonNull User model) {
 
-                Log.d("checker", "entrou");
                 holder.setUser(getApplicationContext(), model.getEmail());
                 users = new ArrayList<>();
 

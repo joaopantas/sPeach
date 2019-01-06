@@ -59,9 +59,9 @@ public class AmigosFragment extends Fragment{
 
         //TODO read groups images
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("Groups");
+        mRef = mFirebaseDatabase.getReference("Friends");
 
-        mRecyclerView = rootView.findViewById(R.id.inviteamigos_recycler_view);
+        mRecyclerView = rootView.findViewById(R.id.amigos_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

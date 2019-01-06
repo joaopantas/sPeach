@@ -2,6 +2,16 @@ package MAIN_CLASSES;
 
 public class User {
     String email;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    String name;
     String device_token;
     private boolean isSelected = false;
 

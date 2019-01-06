@@ -50,7 +50,7 @@ public class ChatsFragment extends Fragment {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mRef = mFirebaseDatabase.getReference("Chats");
 
-        mRecyclerView = rootView.findViewById(R.id.inviteamigos_recycler_view);
+        mRecyclerView = rootView.findViewById(R.id.chats_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

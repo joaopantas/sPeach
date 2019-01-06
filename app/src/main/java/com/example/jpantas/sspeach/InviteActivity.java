@@ -7,11 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 
 public class InviteActivity extends AppCompatActivity {
 
     Button nextBtn;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -19,6 +23,9 @@ public class InviteActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_invite);
+        FirebaseUser user = mAuth.getCurrentUser();
+
+
         nextBtn = findViewById(R.id.next);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override

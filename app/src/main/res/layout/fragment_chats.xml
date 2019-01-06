@@ -10,7 +10,7 @@
     tools:context="Fragment.InviteAmigosFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/card_recycler_view"
+        android:id="@+id/chats_recycler_view"
         android:layout_width="315dp"
         android:layout_height="430dp"
         android:layout_above="@+id/next"

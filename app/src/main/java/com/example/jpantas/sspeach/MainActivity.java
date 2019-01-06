@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-        Log.d("NAMASTE", mAuth.getCurrentUser().toString());
+        Log.d("NAMASTE", mAuth.getUid().toString());
+
 
         //Initializing viewPager
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -116,6 +117,10 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onClick(View view) {
                FirebaseAuth.getInstance().signOut();
+               Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+               intent.putExtra("code","logout");
+               startActivity(intent);
+               finish();
            }
        });
         setupViewPager(viewPager);

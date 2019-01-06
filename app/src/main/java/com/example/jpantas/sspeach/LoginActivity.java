@@ -42,9 +42,9 @@ public class LoginActivity extends AppCompatActivity {
     CallbackManager callbackManager;
     ArrayList<String> Friends;
     private FirebaseAuth mAuth;
-    String name, email, userkey;
+    String name, email, uid;
     DatabaseReference mRef;
-
+    User DBuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +56,19 @@ public class LoginActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
         mAuth = FirebaseAuth.getInstance();
         mRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        DBuser = new User();
+
+        Intent intent = getIntent();
 
         //check if user is already logged in
         if (mAuth.getCurrentUser() != null) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
-
+        //after logging out
+        else if (intent.getStringExtra("code").equals("logout")){
+            loginButton.performClick();
+        }
         loginButton.setReadPermissions(Arrays.asList("email", "public_profile"));
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -103,24 +109,34 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("NAMASTE", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            // Name, email address, and profile photo Url
+                            name = user.getDisplayName();
+                            email = user.getEmail();
+                            uid = user.getUid();
+
+                            Log.d("NAMASTE uid", mRef.child(uid).toString() + "" + mRef.child(uid).getKey() + "" + mRef.child(uid).getRef());
                             if (user != null) {
-                                // Name, email address, and profile photo Url
-                                name = user.getDisplayName();
-                                email = user.getEmail();
+                                //if user already exists in firebase DB
+                                if(mRef.child(uid).toString() != null){
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    finish();
+                                }else{
 
-                                //Create user in firebase database
-                                userkey = mRef.push().getKey();
-                                mRef.child(userkey).setValue(user);
+                                    Log.d("NAMASTE", name + " " + email + " " + email.split("@")[0]);
 
-                                // The user's ID, unique to the Firebase project. Do NOT use this value to
-                                // authenticate with your backend server, if you have one. Use
-                                // FirebaseUser.getIdToken() instead.
-                                String uid = user.getUid();
-                                registerfirebase_user(email, name);
-                                Intent intent = new Intent(LoginActivity.this, InviteActivity.class);
-                                intent.putExtra("username", user);
-                                startActivity(intent);
-                                finish();
+                                    //Create user in firebase database
+                                    DBuser.setEmail(email);
+                                    DBuser.setName(name);
+                                    DBuser.setDevice_token(FirebaseInstanceId.getInstance().getToken().toString());
+                                    mRef.child(uid).setValue(DBuser);
+
+                                    // The user's ID, unique to the Firebase project. Do NOT use this value to
+                                    // authenticate with your backend server, if you have one. Use
+                                    // FirebaseUser.getIdToken() instead.
+                                    Intent intent = new Intent(LoginActivity.this, InviteActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
                             }
                         } else {
                             // If sign in fails, display a message to the user.
@@ -128,15 +144,9 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
-
                         // ...
                     }
                 });
     }
 
-    private void registerfirebase_user(String email, String name) {
-        //TODO add tokenid in the registration
-        String token = FirebaseInstanceId.getInstance().getToken().toString();
-        Log.d("NAMASTE token", token);
-    }
 }
