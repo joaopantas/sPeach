@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:text="useremail"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorWhite"
             android:textSize="30sp"
             android:textStyle="bold" />
 

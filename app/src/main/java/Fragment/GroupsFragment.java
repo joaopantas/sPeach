@@ -20,6 +20,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.jpantas.sspeach.ChatActivity;
+import com.example.jpantas.sspeach.GroupsViewHolder;
 import com.example.jpantas.sspeach.R;
 import com.example.jpantas.sspeach.ViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -51,10 +52,10 @@ public class GroupsFragment extends Fragment {
     int row_index = -1;
     RecyclerView mRecyclerView;
     SeekBar seekBar;
-    String Groupkey;
-    Button sPeach,createChatBtn;
+    String Groupkey, groupid, groupname;
+    Button sPeach, createChatBtn;
     TextView ProgressLabel;
-    int number_members,number_selected_members;
+    int number_members, number_selected_members;
     TextInputEditText chatname;
 
     public GroupsFragment() {
@@ -70,7 +71,6 @@ public class GroupsFragment extends Fragment {
         //TODO read groups images
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mRef = mFirebaseDatabase.getReference("Groups");
-
 
         mRecyclerView = rootView.findViewById(R.id.groups_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -96,13 +96,16 @@ public class GroupsFragment extends Fragment {
                         .setQuery(mRef, Group.class)
                         .build();
 
-        FirebaseRecyclerAdapter<Group, ViewHolder> fra = new FirebaseRecyclerAdapter<Group, ViewHolder>(
+        FirebaseRecyclerAdapter<Group, GroupsViewHolder> fra = new FirebaseRecyclerAdapter<Group, GroupsViewHolder>(
                 options) {
             @Override
-            protected void onBindViewHolder(@NonNull final ViewHolder holder, final int position, @NonNull Group model) {
+            protected void onBindViewHolder(@NonNull final GroupsViewHolder holder, final int position, @NonNull final Group model) {
 
                 Log.d("checker", "entrou");
+                groupid = getRef(position).getKey();
+
                 holder.setGroup(getApplicationContext(), model.getName());
+
                 groups = new ArrayList<>();
 
                 //add models (that have appeared on screen) to listarray
@@ -112,15 +115,13 @@ public class GroupsFragment extends Fragment {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        row_index = position;
 
-                        if (row_index == position) {
-                            Groupkey = getRef(row_index).getKey();
-                            //groups.get(row_index).getEmail();
-                            holder.itemView.setBackgroundColor(Color.parseColor("#F8F8FA"));
-                            sPeach.setVisibility(View.VISIBLE);
-                            sPeach.setEnabled(true);
-                        }
+                        Groupkey = getRef(position).getKey();
+                        //groups.get(row_index).getEmail();
+                        holder.itemView.setBackgroundColor(Color.parseColor("#F8F8FA"));
+                        sPeach.setVisibility(View.VISIBLE);
+                        sPeach.setEnabled(true);
+
                     }
 
                     /*@Override
@@ -136,11 +137,11 @@ public class GroupsFragment extends Fragment {
 
             @NonNull
             @Override
-            public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public GroupsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.cell_group, parent, false);
 
-                return new ViewHolder(view);
+                return new GroupsViewHolder(view);
             }
         };
         fra.startListening();
@@ -148,7 +149,7 @@ public class GroupsFragment extends Fragment {
     }
 
     private void newsPeach(final String key) {
-        final Dialog d = new Dialog(getApplicationContext());
+        final Dialog d = new Dialog(getActivity());
         d.setTitle("New Chat");
         d.setContentView(R.layout.dialog_newchat);
         seekBar = d.findViewById(R.id.seekBar);
@@ -172,10 +173,12 @@ public class GroupsFragment extends Fragment {
                     ints[i] = iter.next();
                 }
 
+                Log.d("NAMASTE numbers 1", String.valueOf(ints[1]));
+                d.dismiss();
                 Intent intent = new Intent(getActivity(), ChatActivity.class);
-                intent.putExtra("list_members_num",ints);
-                intent.putExtra("groupkey",key);
-                intent.putExtra("chatname",chatname.getText());
+                intent.putExtra("list_members_num", ints);
+                intent.putExtra("groupkey", key);
+                intent.putExtra("chatname", chatname.getText().toString());
                 startActivity(intent);
 
             }
@@ -184,9 +187,9 @@ public class GroupsFragment extends Fragment {
         mRef.child(key).child("members").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                number_members=0;
-                for (DataSnapshot snap: dataSnapshot.getChildren()) {
-                    number_members = number_members+1;
+                number_members = 0;
+                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                    number_members = number_members + 1;
                 }
                 Log.d("NAMASTE NUMBER MEMBERS", String.valueOf(number_members));
                 seekBar.setMax(number_members);
@@ -212,14 +215,14 @@ public class GroupsFragment extends Fragment {
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             // updated continuously as the user slides the thumb
             ProgressLabel.setText("Progress: " + progress);
-            if (progress>2){
+            if (progress > 2) {
                 createChatBtn.setEnabled(true);
                 createChatBtn.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 createChatBtn.setEnabled(false);
                 createChatBtn.setVisibility(View.INVISIBLE);
             }
-            number_selected_members= progress;
+            number_selected_members = progress;
         }
 
         @Override

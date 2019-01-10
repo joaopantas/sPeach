@@ -1,5 +1,6 @@
 package Fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,12 +14,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.jpantas.sspeach.ChatActivity;
+import com.example.jpantas.sspeach.ChatsViewHolder;
 import com.example.jpantas.sspeach.R;
 import com.example.jpantas.sspeach.ViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +44,8 @@ public class ChatsFragment extends Fragment {
     private List<Chat> chats;
     int row_index = -1;
     RecyclerView mRecyclerView;
+    private String chatid,chatname;
+
 
     @Nullable
     @Override
@@ -66,18 +74,30 @@ public class ChatsFragment extends Fragment {
                         .setQuery(mRef, Chat.class)
                         .build();
 
-        FirebaseRecyclerAdapter<Chat, ViewHolder> fra = new FirebaseRecyclerAdapter<Chat, ViewHolder>(
+        FirebaseRecyclerAdapter<Chat, ChatsViewHolder> fra = new FirebaseRecyclerAdapter<Chat, ChatsViewHolder>(
                 options) {
             @Override
-            protected void onBindViewHolder(@NonNull ViewHolder holder, final int position, @NonNull Chat model) {
-
+            protected void onBindViewHolder(@NonNull final ChatsViewHolder holder, final int position, @NonNull final Chat model) {
 
                 Log.d("checker", "entrou");
 
                 //TODO add number of members in a chat
-                holder.setChat(getApplicationContext(), model.getName(),20);
                 chats = new ArrayList<>();
+                chatid = getRef(position).getKey();
 
+                mRef.child(chatid).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        chatname = dataSnapshot.child("name").getValue().toString();
+                        holder.setChat(getApplicationContext(), chatname,20);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
                 //add models (that have appeared on screen) to listarray
                 chats.add(model);
 
@@ -86,21 +106,20 @@ public class ChatsFragment extends Fragment {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         //open the chat that is of interest to user (lapit)
-
+                        Intent intent = new Intent(getActivity(), ChatActivity.class);
+                        startActivity(intent);
                     }
                 });
-                holder.itemView.setBackgroundColor(Color.parseColor("#F8F8FA"));
             }
 
             @NonNull
             @Override
-            public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public ChatsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.cell_chat, parent, false);
 
-                return new ViewHolder(view);
+                return new ChatsViewHolder(view);
             }
         };
         fra.startListening();

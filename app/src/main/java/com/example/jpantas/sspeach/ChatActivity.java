@@ -6,7 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
+import com.google.android.gms.common.util.ArrayUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +32,7 @@ public class ChatActivity extends AppCompatActivity {
     int counter;
     HashMap<String,Boolean> members;
     Chat newchat;
-
+    Button back;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,11 +43,13 @@ public class ChatActivity extends AppCompatActivity {
         intent = getIntent();
         Bundle b = intent.getExtras();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
+        back = findViewById(R.id.back);
+        newchat = new Chat();
+        members = new HashMap<>();
 
         //to be run when the chat is firstly created
         if (b.get("groupkey")!= null) {
             key = (String) b.get("groupkey");
-            Log.d("NAMASTE GROUP KEY", String.valueOf(key));
             numbers_members = (int[]) b.get("list_members_num"); //mAuth.getCurrentUser().getUid();
             chatname = (String) b.get("chatname");
 
@@ -57,12 +62,23 @@ public class ChatActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot snap : dataSnapshot.getChildren()) {
                         counter = counter + 1;
-                        if ( Arrays.asList(numbers_members).contains(counter) ){
+                        Log.d("NAMASTE counter", String.valueOf(counter));
+
+                        if (ArrayUtils.contains(numbers_members, counter) ){
                             //add keys of wanted users to array
-                            Log.d("NAMASTE MEMBERS keys", dataSnapshot.getKey());
-                            members.put(dataSnapshot.getKey(),true);
+                            Log.d("NAMASTE MEMBERS keys", snap.getKey());
+                            members.put(snap.getKey(),true);
                         }
                     }
+                    newchat.setName(chatname);
+                    newchat.setMembers(members);
+                    newchat.setGroupid(key);
+
+                    mRefChats = mFirebaseDatabase.getReference("Chats");
+                    chatkey = mRefChats.push().getKey();
+                    mRefChats.child(chatkey).setValue(newchat);
+
+
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -72,14 +88,15 @@ public class ChatActivity extends AppCompatActivity {
 
         }
 
-        newchat.setName(chatname);
-        newchat.setMembers(members);
-
-        mRefChats = mFirebaseDatabase.getReference("Chats");
-        chatkey = mRefChats.push().getKey();
-        mRefChats.child(chatkey).setValue(newchat);
 
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChatActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         //CHAT!!!!
 
 

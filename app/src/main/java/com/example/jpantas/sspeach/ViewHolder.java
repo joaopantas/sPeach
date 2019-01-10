@@ -12,16 +12,41 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
     View v;
     ItemClickListener itemClickListener;
+    Button invite_Btn;
+    Button decline_Btn;
+
+    public Button getInvite_Btn() {
+        return invite_Btn;
+    }
+
+    public void setInvite_Btn(Button invite_Btn) {
+        this.invite_Btn = invite_Btn;
+    }
+
+    public Button getDecline_Btn() {
+        return decline_Btn;
+    }
+
+    public void setDecline_Btn(Button decline_Btn) {
+        this.decline_Btn = decline_Btn;
+    }
 
     public ViewHolder(View itemView) {
         super(itemView);
         v = itemView;
         itemView.setOnClickListener(this);
+
+        invite_Btn = itemView.findViewById(R.id.inviteBtn);
+        invite_Btn.setOnClickListener(this);
+
+        decline_Btn = itemView.findViewById(R.id.declineBtn);
+        decline_Btn.setOnClickListener(this);
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener){
         this.itemClickListener = itemClickListener;
     }
+
 
     public void setChat(Context c, String name, int mmnr) {
         TextView chatname = v.findViewById(R.id.chatname);
@@ -30,9 +55,9 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         membersnumber.setText(mmnr);
     }
 
-    public void setUser(Context c, String email){
+    public void setUser(Context c, String name){
         TextView useremail = v.findViewById(R.id.email);
-        useremail.setText(email);
+        useremail.setText(name);
 
         //TODO present link that takes to list of participants in that group
     }
@@ -45,6 +70,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     @Override
     public void onClick(View v) {
         itemClickListener.onClick(v,getAdapterPosition());
+
     }
 
 }
