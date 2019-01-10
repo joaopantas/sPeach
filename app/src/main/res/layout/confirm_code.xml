@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient1">
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/speach"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        tools:fontFamily="serif-monospace" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="202dp"
+        android:text="@string/login"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        tools:fontFamily="serif-monospace"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        tools:text="Confirm code sent to your email" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="287dp"
+        android:ems="10"
+        android:hint="@string/code"
+        android:inputType="textPersonName"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:fontFamily="serif-monospace" />
+
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="177dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="86dp"
+        android:background="@drawable/rounded_button_face"
+        android:text="@string/login"
+        android:textColor="#eeeeee"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:fontFamily="serif-monospace"
+        tools:text="Confirm" />
+
+</RelativeLayout>
