@@ -19,8 +19,4 @@
     <string name="facebook_app_id">1156564884501887</string>
     <string name="fb_login_protocol_scheme">fb251866835468248</string>
     <string name="skip">SKIP</string>
-    <string name="tab1">Home</string>
-    <string name="tab2">Friends</string>
-    <string name="tab3">AddFriend</string>
-    <string name="tab4">Chats</string>
 </resources>

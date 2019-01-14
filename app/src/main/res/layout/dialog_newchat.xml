@@ -49,8 +49,8 @@
             android:background="@color/colorPrimary"
             android:enabled="false"
             android:text="BLOW MY MIND"
-            android:textColor="@color/cardview_dark_background"
-            android:visibility="invisible" />
+            android:textColor="@color/cardview_dark_background" />
+            <!-- android:visibility="invisible" -->
 
     </LinearLayout>
 

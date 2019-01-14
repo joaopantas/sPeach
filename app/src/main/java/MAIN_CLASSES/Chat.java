@@ -11,8 +11,8 @@ public class Chat {
         return Groupid;
     }
 
-    public void setGroupid(String groupid) {
-        Groupid = groupid;
+    public void setGroupid(String GroupId) {
+        Groupid = GroupId;
     }
 
     String name;
