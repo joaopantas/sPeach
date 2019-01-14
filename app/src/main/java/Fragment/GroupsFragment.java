@@ -153,9 +153,9 @@ public class GroupsFragment extends Fragment {
         d.setTitle("New Chat");
         d.setContentView(R.layout.dialog_newchat);
         seekBar = d.findViewById(R.id.seekBar);
+        //TODO add textview near seekbar where it is displayed: "elements in the group: 2/27"
         createChatBtn = d.findViewById(R.id.createChatBtn);
         chatname = d.findViewById(R.id.nameTxt);
-
         createChatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
