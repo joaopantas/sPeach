@@ -1,5 +1,6 @@
 package Fragment;
 
+import android.app.ActionBar;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -235,6 +237,8 @@ public class AmigosFragment extends Fragment {
             }
         });
         dialog.show();
+        Window window = dialog.getWindow();
+        window.setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
     }
 
    /* @Override
