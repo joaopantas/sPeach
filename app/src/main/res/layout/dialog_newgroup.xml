@@ -11,8 +11,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="50dp">
+        android:paddingTop="50dp"
+        android:paddingRight="15dp">
 
         <EditText
             android:id="@+id/groupname"
@@ -35,10 +35,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/buttonshape"
             android:enabled="false"
-            android:text="EXTEND MYSELF"
-            android:textColor="@color/cardview_dark_background"
+            android:text="Breed"
+            android:textColor="#000"
+            android:textSize="25dp"
             android:visibility="invisible" />
 
     </LinearLayout>

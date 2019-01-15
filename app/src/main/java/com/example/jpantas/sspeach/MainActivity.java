@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                                 viewPager.setCurrentItem(0);
                                 break;
                             case R.id.action_friends:
-                                Toast.makeText(MainActivity.this, "You need to select two or more friends to start a group", Toast.LENGTH_LONG).show();
+                               /* Toast.makeText(MainActivity.this, "You need to select two or more friends to start a group", Toast.LENGTH_LONG).show(); */
                                 viewPager.setCurrentItem(1);
                                 break;
                             case R.id.action_addfriend:

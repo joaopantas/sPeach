@@ -7,7 +7,9 @@
     <color name="colorDefaultButton">#B8AA94</color>
     <color name="colorBlack">#000000</color>
     <color name="colororange">#FF8C00</color>"
+    <color name="colorOrangeNav">#FFA500</color>
     <color name="colorWhite">#FFFFFF</color>
-
+    <color name="colorGrey">#D8D8D8</color>
+    <color name="colorRed">#FF0000</color>
 
 </resources>
