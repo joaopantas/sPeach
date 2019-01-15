@@ -31,9 +31,10 @@
 
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustPan">
 
         </activity>
+
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
