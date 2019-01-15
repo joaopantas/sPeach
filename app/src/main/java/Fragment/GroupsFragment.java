@@ -4,13 +4,13 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,9 +22,10 @@ import android.widget.TextView;
 import com.example.jpantas.sspeach.ChatActivity;
 import com.example.jpantas.sspeach.GroupsViewHolder;
 import com.example.jpantas.sspeach.R;
-import com.example.jpantas.sspeach.ViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,9 +39,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import MAIN_CLASSES.Chat;
 import MAIN_CLASSES.Group;
-import MAIN_CLASSES.User;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -91,18 +90,20 @@ public class GroupsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+
         FirebaseRecyclerOptions<Group> options =
                 new FirebaseRecyclerOptions.Builder<Group>()
                         .setQuery(mRef, Group.class)
                         .build();
 
-        FirebaseRecyclerAdapter<Group, GroupsViewHolder> fra = new FirebaseRecyclerAdapter<Group, GroupsViewHolder>(
+        final FirebaseRecyclerAdapter<Group, GroupsViewHolder> fra = new FirebaseRecyclerAdapter<Group, GroupsViewHolder>(
                 options) {
             @Override
             protected void onBindViewHolder(@NonNull final GroupsViewHolder holder, final int position, @NonNull final Group model) {
 
                 Log.d("checker", "entrou");
                 groupid = getRef(position).getKey();
+                holder.itemView.setTag(groupid);
 
                 holder.setGroup(getApplicationContext(), model.getName());
 
@@ -146,6 +147,36 @@ public class GroupsFragment extends Fragment {
         };
         fra.startListening();
         mRecyclerView.setAdapter(fra);
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            //TODO confirm delete of group after swipe with undo warning.
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                String groupId = (String) viewHolder.itemView.getTag();
+                mRef.child(groupId).removeValue()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("NAMASTE", "onSuccess: Removed list item");
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("NAMASTE", "onFailure: " + e.getLocalizedMessage());
+                            }
+                        });
+                fra.notifyDataSetChanged();
+
+            }
+        }).attachToRecyclerView(mRecyclerView);
+
+
     }
 
     private void newsPeach(final String key) {
@@ -153,9 +184,9 @@ public class GroupsFragment extends Fragment {
         d.setTitle("New Chat");
         d.setContentView(R.layout.dialog_newchat);
         seekBar = d.findViewById(R.id.seekBar);
+        //TODO add textview near seekbar where it is displayed: "elements in the group: 2/27"
         createChatBtn = d.findViewById(R.id.createChatBtn);
         chatname = d.findViewById(R.id.nameTxt);
-
         createChatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
