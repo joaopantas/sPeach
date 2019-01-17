@@ -11,11 +11,23 @@ public class GroupsViewHolder extends RecyclerView.ViewHolder implements View.On
 
     View v;
     ItemClickListener itemClickListener;
+    Button seeMembers_Btn;
+
+    public Button getSeeMembers_Btn() {
+        return seeMembers_Btn;
+    }
+
+    public void setSeeMembers_Btn(Button seeMembers_Btn) {
+        this.seeMembers_Btn = seeMembers_Btn;
+    }
 
     public GroupsViewHolder(View itemView) {
         super(itemView);
         v = itemView;
         itemView.setOnClickListener(this);
+
+        seeMembers_Btn = itemView.findViewById(R.id.membersBtn);
+        seeMembers_Btn.setOnClickListener(this);
     }
 
     public void setItemClickListener(View.OnClickListener clickListener) {

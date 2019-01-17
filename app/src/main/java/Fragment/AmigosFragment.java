@@ -228,6 +228,7 @@ public class AmigosFragment extends Fragment {
                 grouptosave = new Group();
                 grouptosave.setMembers(groupusers);
                 grouptosave.setName(groupname);
+                grouptosave.setCreator(mCurrent_user_id);
 
                 //save group to firebase
                 groupkey = mRef.push().getKey();

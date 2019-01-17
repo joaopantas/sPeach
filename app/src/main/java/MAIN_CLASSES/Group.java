@@ -8,6 +8,15 @@ public class Group {
     HashMap<String,Boolean> members;
     HashMap<String,Date> chatslist;
     String name;
+    String creator;
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
 
     //TODO insert color to be inserted
     public HashMap<String, Boolean> getMembers() {

@@ -23,15 +23,18 @@ import android.widget.TextView;
 
 import com.example.jpantas.sspeach.ChatActivity;
 import com.example.jpantas.sspeach.GroupsViewHolder;
+import com.example.jpantas.sspeach.MembersActivity;
 import com.example.jpantas.sspeach.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -53,11 +56,12 @@ public class GroupsFragment extends Fragment {
     int row_index = -1;
     RecyclerView mRecyclerView;
     SeekBar seekBar;
-    String Groupkey, groupid, groupname;
+    String Groupkey, groupid, groupname, mCurrent_user_id;
     Button sPeach, createChatBtn;
     TextView ProgressLabel;
     int number_members, number_selected_members;
     TextInputEditText chatname;
+    private FirebaseAuth mAuth;
 
     public GroupsFragment() {
     }
@@ -72,6 +76,9 @@ public class GroupsFragment extends Fragment {
         //TODO read groups images
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mRef = mFirebaseDatabase.getReference("Groups");
+
+        mAuth = FirebaseAuth.getInstance();
+        mCurrent_user_id = mAuth.getCurrentUser().getUid();
 
         mRecyclerView = rootView.findViewById(R.id.groups_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -92,16 +99,22 @@ public class GroupsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        Query myGroups = mRef.orderByChild("creator").equalTo(mCurrent_user_id);
+
+        Log.d("NAMASTE current", mCurrent_user_id);
 
         FirebaseRecyclerOptions<Group> options =
                 new FirebaseRecyclerOptions.Builder<Group>()
-                        .setQuery(mRef, Group.class)
+                        .setQuery(myGroups, Group.class)
                         .build();
 
         final FirebaseRecyclerAdapter<Group, GroupsViewHolder> fra = new FirebaseRecyclerAdapter<Group, GroupsViewHolder>(
                 options) {
             @Override
             protected void onBindViewHolder(@NonNull final GroupsViewHolder holder, final int position, @NonNull final Group model) {
+
+                Log.d("NAMASTE creator", model.getCreator());
+
 
                 Log.d("checker", "entrou");
                 groupid = getRef(position).getKey();
@@ -136,6 +149,17 @@ public class GroupsFragment extends Fragment {
                     }*/
 
                 });
+
+                //Check members button
+                holder.getSeeMembers_Btn().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent membersIntent = new Intent(getActivity(), MembersActivity.class);
+                        membersIntent.putExtra("groupkey", getRef(position).getKey());
+                        startActivityForResult(membersIntent, 1);
+                    }
+                });
+
             }
 
             @NonNull

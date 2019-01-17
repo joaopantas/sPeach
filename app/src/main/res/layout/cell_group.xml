@@ -21,15 +21,15 @@
             android:textStyle="bold"
             android:background="@color/colororange"/>
 
-    <ImageView
-        android:id="@+id/imageView3"
+    <Button
+        android:id="@+id/membersBtn"
         android:layout_width="63dp"
         android:layout_height="52dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="0dp"
-        app:srcCompat="@drawable/group_button" />
+        android:background="@drawable/group_button" />
 
 
 </RelativeLayout>
