@@ -1,6 +1,7 @@
 package com.example.jpantas.sspeach;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     ArrayList<String> Friends;
     private FirebaseAuth mAuth;
     String name, email, uid;
+    Uri photourl;
     DatabaseReference mRef;
     User DBuser;
 
@@ -116,7 +118,9 @@ public class LoginActivity extends AppCompatActivity {
                             name = user.getDisplayName();
                             email = user.getEmail();
                             uid = user.getUid();
+                            photourl = user.getPhotoUrl();
 
+                            Log.d("NAMASTE photourl", photourl.toString());
                             Log.d("NAMASTE name", name);
                             Log.d("NAMASTE email", email);
                             Log.d("NAMASTE", name + " " + email + " " + email.split("@")[0]);
@@ -129,11 +133,20 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if (dataSnapshot.exists()) {
+
+                                            //TODO remove this part eventually
+                                            Log.d("NAMASTE photourl", photourl.toString()+"?height=100&width=100");
+                                            DBuser.setEmail(email);
+                                            DBuser.setUri(photourl.toString()+"?height=100&width=100");
+                                            DBuser.setName(name);
+                                            DBuser.setDevice_token(FirebaseInstanceId.getInstance().getToken().toString());
+                                            mRef.child(uid).setValue(DBuser);
                                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                             finish();
                                         } else {
                                             //Create user in firebase database
                                             DBuser.setEmail(email);
+                                            DBuser.setUri(photourl.toString()+"?height=100&width=100");
                                             DBuser.setName(name);
                                             DBuser.setDevice_token(FirebaseInstanceId.getInstance().getToken().toString());
                                             mRef.child(uid).setValue(DBuser);

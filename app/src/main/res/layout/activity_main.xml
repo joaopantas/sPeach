@@ -43,6 +43,7 @@
         android:layout_marginStart="316dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/ic_action_signout"
+        android:backgroundTint="@color/colorBlack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"

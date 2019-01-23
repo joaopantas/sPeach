@@ -97,7 +97,7 @@ public class InviteActivity extends AppCompatActivity {
 
                 //TODO visualise every user but himself
                 Log.d("NAMASTE NAME", model.getName());
-                holder.setUser(getApplicationContext(), model.getName());
+                holder.setUser(getApplicationContext(), model.getName(),getRef(position).getKey());
                 users = new ArrayList<>();
 
                 //add models (that have appeared on screen) to listarray
@@ -113,7 +113,7 @@ public class InviteActivity extends AppCompatActivity {
                     holder.itemView.setVisibility(View.GONE);
                 } else {
                     Log.d("NAMASTE NAME", model.getName());
-                    holder.setUser(getApplicationContext(), model.getName());
+                    holder.setUser(getApplicationContext(), model.getName(),getRef(position).getKey());
                     Userkey = getRef(position).getKey();
                     //add models (that have appeared on screen) to listarray
                     users.add(model);

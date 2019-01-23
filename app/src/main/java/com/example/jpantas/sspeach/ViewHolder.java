@@ -2,10 +2,14 @@ package com.example.jpantas.sspeach;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.facebook.login.widget.ProfilePictureView;
+import com.squareup.picasso.Picasso;
 
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -55,12 +59,17 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         membersnumber.setText(mmnr);
     }
 
-    public void setUser(Context c, String name){
+    public void setUser(Context c, String name, String image_url){
         TextView useremail = v.findViewById(R.id.email);
         useremail.setText(name);
 
-        //TODO present link that takes to list of participants in that group
-    }
+        /*ProfilePictureView profilePictureView = v.findViewById(R.id.userProfilePicture);
+        Log.d("NAMASTE uid",user_uid);
+        profilePictureView.setProfileId(user_uid);*/
+        ImageView imageView = v.findViewById(R.id.userProfilePicture);
+        Picasso.get().load(image_url).into(imageView);
+
+        }
 
     public void setGroup(Context c, String group) {
         TextView groupname = v.findViewById(R.id.groupname);

@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.example.jpantas.sspeach.MainActivity;
 import com.example.jpantas.sspeach.R;
 import com.example.jpantas.sspeach.AmigosViewHolder;
+import com.facebook.login.widget.ProfilePictureView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -136,7 +137,9 @@ public class MembersActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         friendname = dataSnapshot.child("name").getValue().toString();
-                        holder.setUser(getApplicationContext(), friendname);
+                        String uri = dataSnapshot.child("uri").getValue().toString();
+
+                        holder.setUser(getApplicationContext(), friendname, uri);
 
                     }
 

@@ -1,7 +1,18 @@
 package MAIN_CLASSES;
 
+import android.net.Uri;
+
 public class User {
     String email;
+    String uri;
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
 
     public String getName() {
         return name;

@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.jpantas.sspeach.ViewHolder;
+import com.facebook.login.widget.ProfilePictureView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -110,7 +111,9 @@ public class InviteAmigosFragment extends Fragment {
                     states.add("temp");
                 } else {
                     Log.d("NAMASTE NAME", model.getName());
-                    holder.setUser(getApplicationContext(), model.getName());
+
+                    holder.setUser(getApplicationContext(), model.getName(), model.getUri());
+
                     Userkey = getRef(position).getKey();
                     //add models (that have appeared on screen) to listarray
                     users.add(model);
