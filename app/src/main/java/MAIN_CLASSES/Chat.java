@@ -4,15 +4,15 @@ import java.util.HashMap;
 
 public class Chat {
 
-    String percentage, Groupid;
+    String percentage, groupid;
     HashMap<String,Boolean> members;
 
     public String getGroupid() {
-        return Groupid;
+        return groupid;
     }
 
-    public void setGroupid(String GroupId) {
-        Groupid = GroupId;
+    public void setGroupid(String groupId) {
+        groupid = groupId;
     }
 
     String name;

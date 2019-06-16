@@ -1,13 +1,18 @@
 package com.example.jpantas.sspeach;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.common.util.ArrayUtils;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +26,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 import MAIN_CLASSES.Chat;
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -34,10 +42,26 @@ public class ChatActivity extends AppCompatActivity {
     Chat newchat;
     Button back;
 
+    private String mChatId;
+    private Toolbar mChatToolbar;
+    private TextView mTitleView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        mChatToolbar = (Toolbar)findViewById(R.id.chat_app_bar);
+        setSupportActionBar(mChatToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowCustomEnabled(true);
+
+        mChatId = getIntent().getStringExtra("chatname");
+
+
+
 
         //get array with members numbers and key of group
         intent = getIntent();
@@ -46,6 +70,50 @@ public class ChatActivity extends AppCompatActivity {
         back = findViewById(R.id.back);
         newchat = new Chat();
         members = new HashMap<>();
+
+        DatabaseReference mRef;
+
+        mRef = mFirebaseDatabase.getReference("Chats");
+
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View action_bar_view = inflater.inflate(R.layout.chat_custom_bar, null);
+
+        actionBar.setCustomView(action_bar_view);
+
+        if (mChatId!=null){
+            mRef.child(mChatId).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    chatname = dataSnapshot.child("name").getValue().toString();
+                    //getSupportActionBar().setTitle(chatname);
+                    mTitleView = (TextView) findViewById(R.id.custom_bar_title);
+                    System.out.println("nome: " + chatname);
+                    mTitleView.setText(chatname);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+
+        //------------ Custom Action Bar Items -----------
+
+        //mTitleView = (TextView) findViewById(R.id.custom_bar_title);
+        //System.out.println("nome: " + chatname);
+        //mTitleView.setText(chatname);
+
+
+
+
+
+
+
+
+
+
 
         //to be run when the chat is firstly created
         if (b.get("groupkey")!= null) {

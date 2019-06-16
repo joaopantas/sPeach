@@ -108,6 +108,7 @@ public class ChatsFragment extends Fragment {
                     public void onClick(View v) {
                         //open the chat that is of interest to user (lapit)
                         Intent intent = new Intent(getActivity(), ChatActivity.class);
+                        intent.putExtra("chatname", getRef(position).getKey());
                         startActivity(intent);
                     }
                 });
