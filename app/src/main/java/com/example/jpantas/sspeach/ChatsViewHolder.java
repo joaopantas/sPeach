@@ -23,12 +23,15 @@ public class ChatsViewHolder extends RecyclerView.ViewHolder implements View.OnC
     }
 
 
-    public void setChat(Context c, String name, int mmnr) {
-        TextView chatname = v.findViewById(R.id.chatname);
+    public void setChat(Context c, String name, String messageTxt, int mmnr) {
+        TextView chatname = v.findViewById(R.id.topic);
         chatname.setText(name);
+        TextView message = v.findViewById(R.id.message);
+        message.setText(messageTxt);
         TextView membersnumber = v.findViewById(R.id.membersnumber);
         membersnumber.setText(String.valueOf(mmnr));
     }
+
 
     @Override
     public void onClick(View v) {

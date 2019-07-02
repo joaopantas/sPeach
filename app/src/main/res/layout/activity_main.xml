@@ -17,8 +17,8 @@
         android:layout_marginStart="0dp"
         android:background="?android:attr/windowBackground"
         app:itemBackground="@color/colorOrangeNav"
-        app:itemIconTint="@color/color_bottom_nav"
         app:itemIconSize="36dp"
+        app:itemIconTint="@color/color_bottom_nav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -37,19 +37,19 @@
     <Button
 
         android:id="@+id/logout"
-        android:layout_width="75dp"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="316dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/ic_action_signout"
         android:backgroundTint="@color/colorBlack"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:clickable="true"
-        android:focusable="true"/>
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

@@ -7,7 +7,17 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    
+
+    <!-- Base application theme. -->
+    <style name="AppThemeChat" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colororange</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <item name="android:textColorSecondary">@color/colorGrey</item>
+
+    </style>
+
     <style name="ButtonStyle">
         <item name = "android:layout_width"> 150dp </item>
         <item name = "android:layout_height"> 150dp </item>

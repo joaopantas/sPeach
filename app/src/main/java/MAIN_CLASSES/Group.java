@@ -10,6 +10,16 @@ public class Group {
     String name;
     String creator;
 
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    String uri;
+
     public String getCreator() {
         return creator;
     }

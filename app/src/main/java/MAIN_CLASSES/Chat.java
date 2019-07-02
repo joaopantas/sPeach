@@ -4,8 +4,31 @@ import java.util.HashMap;
 
 public class Chat {
 
-    String percentage, groupid;
+    String percentage;
+    String groupid;
+
+    public String getFirst_message() {
+        return first_message;
+    }
+
+    public void setFirst_message(String first_message) {
+        this.first_message = first_message;
+    }
+
+    String first_message;
     HashMap<String,Boolean> members;
+
+    public HashMap<String, String> getEncryptedid() {
+        return encryptedid;
+    }
+
+    public void setEncryptedid(HashMap<String, String> encryptedid) {
+        this.encryptedid = encryptedid;
+    }
+
+    HashMap<String,String> encryptedid;
+
+
 
     public String getGroupid() {
         return groupid;
@@ -15,7 +38,15 @@ public class Chat {
         groupid = groupId;
     }
 
-    String name;
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    String topic;
 
     public HashMap<String, Boolean> getMembers() {
         return members;
@@ -23,14 +54,6 @@ public class Chat {
 
     public void setMembers(HashMap<String, Boolean> members) {
         this.members = members;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPercentage() {

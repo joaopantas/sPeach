@@ -20,25 +20,28 @@ import Fragment.AmigosFragment;
 import Fragment.ChatsFragment;
 import Fragment.GroupsFragment;
 import Fragment.InviteAmigosFragment;
+import Fragment.PublicChatsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
     //This is our viewPager
-    private ViewPager viewPager;
+    public static ViewPager viewPager;
 
     //Fragments
     GroupsFragment groupsFragment;
     AmigosFragment amigosFragment;
     ChatsFragment chatsFragment;
     InviteAmigosFragment inviteAmigosFragment;
+    PublicChatsFragment publicChatsFragment;
     MenuItem prevMenuItem;
 
     private FirebaseAuth mAuth;
     Intent prevIntent;
     String name;
     Button logout;
+    public static ViewPagerAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Initializing viewPager
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //Initializing the bottomNavigationView
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigationView);
 
@@ -59,18 +62,22 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
-                            case R.id.action_groups:
+                            case R.id.action_public_chats:
                                 viewPager.setCurrentItem(0);
                                 break;
-                            case R.id.action_friends:
-                               /* Toast.makeText(MainActivity.this, "You need to select two or more friends to start a group", Toast.LENGTH_LONG).show(); */
+                            case R.id.action_chats:
                                 viewPager.setCurrentItem(1);
                                 break;
-                            case R.id.action_addfriend:
+                            case R.id.action_groups:
                                 viewPager.setCurrentItem(2);
                                 break;
-                            case R.id.action_chats:
+                            case R.id.action_friends:
+                                /* Toast.makeText(MainActivity.this, "You need to select two or more friends to start a group", Toast.LENGTH_LONG).show(); */
                                 viewPager.setCurrentItem(3);
+                                break;
+                            case R.id.action_addfriend:
+                                viewPager.setCurrentItem(4);
+
                                 break;
                         }
                         return false;
@@ -93,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("page", "onPageSelected: " + position);
                 bottomNavigationView.getMenu().getItem(position).setChecked(true);
                 prevMenuItem = bottomNavigationView.getMenu().getItem(position);
+                adapter.notifyDataSetChanged();
 
             }
 
@@ -102,16 +110,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-       /*  //Disable ViewPager Swipe
-       viewPager.setOnTouchListener(new View.OnTouchListener()
-        {
-            @Override
-            public boolean onTouch(View v, MotionEvent event)
-            {
-                return true;
-            }
-        });
-        */
        logout= findViewById(R.id.logout);
        logout.setEnabled(true);
        logout.setOnClickListener(new View.OnClickListener() {
@@ -128,16 +126,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         groupsFragment = new GroupsFragment();
         amigosFragment = new AmigosFragment();
         chatsFragment = new ChatsFragment();
         inviteAmigosFragment = new InviteAmigosFragment();
-
+        publicChatsFragment = new PublicChatsFragment();
+        adapter.addFragment(publicChatsFragment);
+        adapter.addFragment(chatsFragment);
         adapter.addFragment(groupsFragment);
         adapter.addFragment(amigosFragment);
         adapter.addFragment(inviteAmigosFragment);
-        adapter.addFragment(chatsFragment);
         viewPager.setAdapter(adapter);
     }
 }

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:facebook="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp"
 
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,70 +15,70 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:clickable="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/grey_background_border"
+        >
 
         <!--com.facebook.login.widget.ProfilePictureView
             android:id="@+id/userProfilePicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
            /-->
-
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="70dp"
             android:id="@+id/userProfilePicture"
-            android:layout_width="100dp"
-            android:layout_height="100dp" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:clickable="true"
-        android:orientation="vertical">
+            android:layout_height="70dp" />
 
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="useremail"
-            android:textColor="@color/colorBlack"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:clickable="true"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/inviteBtn"
+            <TextView
+                android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="INVITE"
-                tools:fontFamily="serif-monospace"
-                android:textColor="@color/colororange"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                />
-
-            <Button
-                android:id="@+id/declineBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toStartOf="@+id/inviteBtn"
-                android:text="DECLINE"
-                android:enabled="false"
-                android:visibility="invisible"
-                tools:fontFamily="serif-monospace"
+                android:layout_gravity="left"
+                android:text="useremail"
                 android:textColor="@color/colorBlack"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                />
-        </RelativeLayout>
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/inviteBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="INVITE"
+                    android:textColor="@color/colororange"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:fontFamily="serif-monospace" />
+
+                <Button
+                    android:id="@+id/declineBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/inviteBtn"
+                    android:enabled="false"
+                    android:text="DECLINE"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:visibility="invisible"
+                    tools:fontFamily="serif-monospace" />
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
