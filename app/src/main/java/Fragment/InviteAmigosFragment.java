@@ -387,4 +387,9 @@ public class InviteAmigosFragment extends Fragment {
         fra.startListening();
         mRecyclerView.setAdapter(fra);
     }
+
+    public static InviteAmigosFragment newInstance() {
+        return new InviteAmigosFragment();
+    }
+
 }

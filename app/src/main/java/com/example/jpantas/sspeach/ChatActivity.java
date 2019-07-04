@@ -215,8 +215,10 @@ public class ChatActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
-                Intent intent = new Intent(ChatActivity.this, MainActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(ChatActivity.this, MainActivity.class);
+                //startActivity(intent);
+                //return true;
+                onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);

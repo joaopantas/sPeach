@@ -170,9 +170,9 @@ public class PublicChatsFragment extends Fragment {
                         Log.d("NAMASTE member", model.getMembers().get(mCurrentUserId) + " ");
 
                         if(model.getMembers().get(mCurrentUserId).equals("false")) {
-                            holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(),true)), String.valueOf(model.getSize()), "JOIN");
+                            holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(),"true")), String.valueOf(model.getSize()), "JOIN");
                         }else{
-                            holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(),true)), String.valueOf(model.getSize()), "LEAVE");
+                            holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(),"true")), String.valueOf(model.getSize()), "LEAVE");
                         }
                     }
 
@@ -289,8 +289,6 @@ public class PublicChatsFragment extends Fragment {
             }
         }).attachToRecyclerView(mRecyclerView);
     }
-
-
 
     private void newsPeach() {
         final Dialog d = new Dialog(getActivity());

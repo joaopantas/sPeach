@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,6 +22,8 @@ import Fragment.ChatsFragment;
 import Fragment.GroupsFragment;
 import Fragment.InviteAmigosFragment;
 import Fragment.PublicChatsFragment;
+
+import static android.support.v4.view.PagerAdapter.POSITION_NONE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,20 +72,23 @@ public class MainActivity extends AppCompatActivity {
                                 viewPager.setCurrentItem(1);
                                 break;
                             case R.id.action_groups:
+                                setupViewPager(viewPager);
                                 viewPager.setCurrentItem(2);
                                 break;
                             case R.id.action_friends:
                                 /* Toast.makeText(MainActivity.this, "You need to select two or more friends to start a group", Toast.LENGTH_LONG).show(); */
+                                setupViewPager(viewPager);
                                 viewPager.setCurrentItem(3);
                                 break;
                             case R.id.action_addfriend:
                                 viewPager.setCurrentItem(4);
-
                                 break;
                         }
                         return false;
                     }
                 });
+
+        setupViewPager(viewPager);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -92,15 +98,22 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                if (prevMenuItem != null) {
+               /* if (prevMenuItem != null) {
                     prevMenuItem.setChecked(false);
                 } else {
                     bottomNavigationView.getMenu().getItem(0).setChecked(false);
                 }
                 Log.d("page", "onPageSelected: " + position);
                 bottomNavigationView.getMenu().getItem(position).setChecked(true);
-                prevMenuItem = bottomNavigationView.getMenu().getItem(position);
+                prevMenuItem = bottomNavigationView.getMenu().getItem(position);*/
                 adapter.notifyDataSetChanged();
+                Fragment fragment = adapter.getFragment(position);
+                Log.d("NAMASTE FRAGMENT", "CRIOU");
+
+                if (fragment != null) {
+                    Log.d("NAMASTE FRAGMENT", "ENTROU TESTE");
+                    fragment.onResume();
+                }
 
             }
 
@@ -122,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                finish();
            }
        });
-        setupViewPager(viewPager);
+
     }
 
     private void setupViewPager(ViewPager viewPager) {

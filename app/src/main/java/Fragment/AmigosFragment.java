@@ -238,6 +238,10 @@ public class AmigosFragment extends Fragment {
 
     }
 
+    public static AmigosFragment newInstance() {
+        return new AmigosFragment();
+    }
+
 
     private void showPictureDialog(){
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(getActivity());

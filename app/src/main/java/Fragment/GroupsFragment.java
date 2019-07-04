@@ -40,8 +40,10 @@ import com.example.jpantas.sspeach.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.common.util.ArrayUtils;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -52,8 +54,10 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -63,6 +67,7 @@ import java.util.Set;
 
 import MAIN_CLASSES.Chat;
 import MAIN_CLASSES.Group;
+import MAIN_CLASSES.Message;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -70,7 +75,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 public class GroupsFragment extends Fragment {
 
     FirebaseDatabase mFirebaseDatabase;
-    DatabaseReference mRefGroups, mRefChats, mRefThemes;
+    DatabaseReference mRefGroups, mRefChats, mRefThemes, mRefMessages;
     private List<Group> groups;
     private List<String> themes_subjects;
     int row_index = -1;
@@ -90,6 +95,7 @@ public class GroupsFragment extends Fragment {
     Set<Integer> intSet, encrypted_names_intSet;
     int counter, size, lastClicked, static_progres, chatNameSize, themeSize;
     ImageView iconFAB;
+    Message new_message;
 
     String creator, first_message, topicTxt;
 
@@ -109,6 +115,7 @@ public class GroupsFragment extends Fragment {
         mRefGroups = mFirebaseDatabase.getReference("Groups");
         mRefChats = mFirebaseDatabase.getReference("Chats");
         mRefThemes = mFirebaseDatabase.getReference("Themes");
+        mRefMessages = mFirebaseDatabase.getReference("Messages");
 
         themes_subjects = new ArrayList<>();
         encrypted_ids = new HashMap<>();
@@ -268,6 +275,10 @@ public class GroupsFragment extends Fragment {
 
     }
 
+    public static GroupsFragment newInstance() {
+        return new GroupsFragment();
+    }
+
     private void newsPeach(final String key) {
         final Dialog d = new Dialog(getActivity());
 
@@ -418,17 +429,32 @@ public class GroupsFragment extends Fragment {
                         new_chat.setEncryptedid(encrypted_ids);
                         new_chat.setFirst_message(theme.getText().toString());
 
+                        new_message = new Message();
+                        new_message.setFrom(encrypted_ids.get(mCurrent_user_id));
+                        new_message.setMessage(theme.getText().toString());
+                        new_message.setSeen(false);
+                        String currentDate = DateFormat.getDateTimeInstance().format(new Date());
+                        new_message.setTime(currentDate);
+
+
                         final String chat_key = mRefChats.push().getKey();
+                        final String message_key = mRefMessages.child(chat_key).push().getKey();
 
                         mRefChats.child(chat_key).setValue(new_chat, new DatabaseReference.CompletionListener() {
                             @Override
                             public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                d.dismiss();
-                                Intent intent = new Intent(getActivity(), ChatActivity.class);
-                                //intent.putExtra("list_members_num", ints);
-                                intent.putExtra("groupname", groupname);
-                                intent.putExtra("chatid", chat_key);
-                                startActivity(intent);
+
+                                mRefMessages.child(chat_key).child(message_key).setValue(new_message).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        d.dismiss();
+                                        Intent intent = new Intent(getActivity(), ChatActivity.class);
+                                        //intent.putExtra("list_members_num", ints);
+                                        intent.putExtra("groupname", groupname);
+                                        intent.putExtra("chatid", chat_key);
+                                        startActivity(intent);
+                                    }
+                                });
                             }
                         });
                     }

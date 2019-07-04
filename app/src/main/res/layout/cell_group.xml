@@ -13,7 +13,6 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/members_profile_picture"
-        android:background="@drawable/group_button"
         android:layout_alignParentEnd="true"
         android:layout_gravity="center_vertical"
         />

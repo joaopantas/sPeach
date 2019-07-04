@@ -192,4 +192,8 @@ public class ChatsFragment extends Fragment {
             }
         }).attachToRecyclerView(mRecyclerView);
     }
+
+    public static ChatsFragment newInstance() {
+        return new ChatsFragment();
+    }
 }
