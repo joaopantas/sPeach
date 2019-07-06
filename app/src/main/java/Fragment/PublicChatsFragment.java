@@ -109,6 +109,7 @@ public class PublicChatsFragment extends Fragment {
         mCurrentUserId = mAuth.getCurrentUser().getUid();
         chats = new HashMap<>();
 
+
         mRecyclerView = rootView.findViewById(R.id.chats_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -314,6 +315,8 @@ public class PublicChatsFragment extends Fragment {
         chatTopic = d.findViewById(R.id.topicTxt);
         chatTheme = d.findViewById(R.id.themeTxt);
         static_progres = -1;
+        topicTxt= " ";
+        chatThemeSize = -1;
         members = new HashMap<>();
         seenMembers = new HashMap<>();
 

@@ -13,23 +13,8 @@
     <list default="true" id="582e8a67-1b03-4feb-b299-7f69eeb983ae" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fragment/AmigosFragment.java" afterPath="$PROJECT_DIR$/src/main/java/Fragment/AmigosFragment.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fragment/ChatsFragment.java" afterPath="$PROJECT_DIR$/src/main/java/Fragment/ChatsFragment.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fragment/GroupsFragment.java" afterPath="$PROJECT_DIR$/src/main/java/Fragment/GroupsFragment.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fragment/InviteAmigosFragment.java" afterPath="$PROJECT_DIR$/src/main/java/Fragment/InviteAmigosFragment.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fragment/PublicChatsFragment.java" afterPath="$PROJECT_DIR$/src/main/java/Fragment/PublicChatsFragment.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/Chat.java" afterPath="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/Chat.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/PublicChat.java" afterPath="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/PublicChat.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatActivity.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatsViewHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatsViewHolder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MainActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MainActivity.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MessagesViewHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MessagesViewHolder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatActivity.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatsViewHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatsViewHolder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/cell_chat.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/cell_chat.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/cell_public_chat.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/cell_public_chat.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/cell_user.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/cell_user.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/chat_balloon.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/chat_balloon.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/src/main/res/values/colors.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,12 +37,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="AmigosFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AmigosFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/AmigosFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="387" column="58" lean-forward="false" selection-start-line="387" selection-start-column="58" selection-end-line="387" selection-end-column="58" />
+            <state relative-caret-position="143">
+              <caret line="391" column="0" lean-forward="false" selection-start-line="391" selection-start-column="0" selection-end-line="391" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GroupsFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/GroupsFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="382" column="0" lean-forward="false" selection-start-line="382" selection-start-column="0" selection-end-line="382" selection-end-column="0" />
+              <folding>
+                <element signature="class#8899:10233" expanded="false" />
+                <element signature="e#14238#14276#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,6 +73,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="PublicChatsFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/PublicChatsFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="316" column="0" lean-forward="false" selection-start-line="316" selection-start-column="0" selection-end-line="318" selection-end-column="27" />
+              <folding>
+                <element signature="e#12818#13205#0" expanded="true" />
+                <element signature="e#13204#13205#0" expanded="true" />
+                <element signature="e#17083#17121#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -88,11 +100,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mCurrentUserId</find>
-      <find>chatac</find>
-      <find>mEncCurrentUserId</find>
-      <find>setValue</find>
-      <find>remove</find>
       <find>adapter</find>
       <find>ViewPagerAdapter</find>
       <find>actionBar</find>
@@ -118,6 +125,11 @@
       <find>uploadPhoto</find>
       <find>groupname</find>
       <find>intent</find>
+      <find>seekBar</find>
+      <find>topicTxt</find>
+      <find>chatThemeSize</find>
+      <find>static_progres</find>
+      <find>chatNameSize</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -2441,19 +2453,19 @@
         <option value="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/PublicChat.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatsViewHolder.java" />
         <option value="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/Chat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Fragment/GroupsFragment.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/cell_chat.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatsViewHolder.java" />
         <option value="$PROJECT_DIR$/src/main/java/Fragment/ChatsFragment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Fragment/PublicChatsFragment.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/cell_user.xml" />
         <option value="$PROJECT_DIR$/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MessagesViewHolder.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/chat_balloon.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Fragment/InviteAmigosFragment.java" />
         <option value="$PROJECT_DIR$/src/main/java/Fragment/AmigosFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Fragment/PublicChatsFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Fragment/GroupsFragment.java" />
       </list>
     </option>
   </component>
@@ -2763,6 +2775,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2779,7 +2792,7 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16756175" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16756175" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23261118" sideWeight="0.735768" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12083781" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2955,6 +2968,7 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="258">
           <caret line="13" column="45" lean-forward="false" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3002,6 +3016,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3181,16 +3196,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/PublicChatsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="286" column="19" lean-forward="false" selection-start-line="286" selection-start-column="19" selection-end-line="286" selection-end-column="19" />
-          <folding>
-            <element signature="e#17031#17069#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-946">
@@ -3293,17 +3298,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/GroupsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="147" column="30" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding>
-            <element signature="class#8925:10259" expanded="false" />
-            <element signature="e#14185#14223#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/dialog_newgroup.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3317,9 +3311,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/AmigosFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="387" column="58" lean-forward="false" selection-start-line="387" selection-start-column="58" selection-end-line="387" selection-end-column="58" />
+        <state relative-caret-position="143">
+          <caret line="391" column="0" lean-forward="false" selection-start-line="391" selection-start-column="0" selection-end-line="391" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/PublicChatsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="316" column="0" lean-forward="false" selection-start-line="316" selection-start-column="0" selection-end-line="318" selection-end-column="27" />
+          <folding>
+            <element signature="e#12818#13205#0" expanded="true" />
+            <element signature="e#13204#13205#0" expanded="true" />
+            <element signature="e#17083#17121#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/GroupsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="382" column="0" lean-forward="false" selection-start-line="382" selection-start-column="0" selection-end-line="382" selection-end-column="0" />
+          <folding>
+            <element signature="class#8899:10233" expanded="false" />
+            <element signature="e#14238#14276#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -128,7 +128,6 @@ public class GroupsFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         clicked = false;
-        chatNameSize = 0;
         lastClicked=-1;
 
         iconFAB = new ImageView(getActivity());
@@ -290,6 +289,9 @@ public class GroupsFragment extends Fragment {
         createChatBtn = d.findViewById(R.id.createChatBtn);
         chatname = d.findViewById(R.id.nameTxt);
         theme = d.findViewById(R.id.themeTxt);
+        static_progres = -1;
+        topicTxt= " ";
+        chatNameSize = -1;
 
         chatname.addTextChangedListener(new TextWatcher() {
             @Override

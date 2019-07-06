@@ -389,7 +389,6 @@ public class AmigosFragment extends Fragment {
 
                                 Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
 
-                                Log.d("NAMASTE", "onComplete: Url: "+ downUri.toString());
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
