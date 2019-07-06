@@ -31,6 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import com.example.jpantas.sspeach.R;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
@@ -104,19 +105,13 @@ public class InviteAmigosFragment extends Fragment {
                 Log.d("NAMASTE User key", user_id);
                 //Log.d("NAMASTE currentuser key", mCurrentUser.getUid());
                 users = new ArrayList<>();
+                holder.setUser(getApplicationContext(), model.getName(), model.getUri());
+                states.add("temp");
 
                 //visualise every user but himself
                 if (mCurrentUser.getUid().equals(user_id)) {
-                    holder.itemView.setVisibility(View.GONE);
-                    states.add("temp");
-                } else {
-                    Log.d("NAMASTE NAME", model.getName());
-
-                    holder.setUser(getApplicationContext(), model.getName(), model.getUri());
-
-                    Userkey = getRef(position).getKey();
-                    //add models (that have appeared on screen) to listarray
-                    users.add(model);
+                    holder.getInvite_Btn().setVisibility(View.INVISIBLE);
+                    holder.getInvite_Btn().setEnabled(false);
                     states.add("temp");
                 }
                 //initialize arraylist with same size as list of users

@@ -98,6 +98,7 @@ public class GroupsFragment extends Fragment {
     Message new_message;
 
     String creator, first_message, topicTxt;
+    HashMap<String, Boolean> seenMembers;
 
     Boolean clicked;
     public GroupsFragment() {
@@ -402,6 +403,7 @@ public class GroupsFragment extends Fragment {
 
                 counter = 0;
                 members_selected = new HashMap<>();
+                seenMembers = new HashMap<>();
                 new_chat = new Chat();
 
                 mRefGroups.child(key).child("members").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -413,11 +415,15 @@ public class GroupsFragment extends Fragment {
                             if(ArrayUtils.contains(ints, counter) && members_selected.size() == ints.length-1 && !members_selected.containsKey(mCurrent_user_id)) {
                                 members_selected.put(mCurrent_user_id,true);
                                 encrypted_ids.put(mCurrent_user_id, themes_subjects.get(counter) );
+                                seenMembers.put(mCurrent_user_id,true);
+
+
                             }
                             else if (ArrayUtils.contains(ints, counter) )
                             {
                                 //add keys of wanted users to array
                                 members_selected.put(snap.getKey(),true);
+                                seenMembers.put(snap.getKey(),false);
                                 encrypted_ids.put(snap.getKey(), themes_subjects.get(counter) );
                             }
                             counter = counter + 1;
@@ -428,11 +434,11 @@ public class GroupsFragment extends Fragment {
                         new_chat.setGroupid(key);
                         new_chat.setEncryptedid(encrypted_ids);
                         new_chat.setFirst_message(theme.getText().toString());
+                        new_chat.setSeen(seenMembers);
 
                         new_message = new Message();
                         new_message.setFrom(encrypted_ids.get(mCurrent_user_id));
                         new_message.setMessage(theme.getText().toString());
-                        new_message.setSeen(false);
                         String currentDate = DateFormat.getDateTimeInstance().format(new Date());
                         new_message.setTime(currentDate);
 

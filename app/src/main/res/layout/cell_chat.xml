@@ -23,8 +23,7 @@ android:padding="10dp"
         android:layout_gravity="left"
         android:hint="first message that initialized this chat and inaugurated speach"
         android:textColor="@color/colorBlack"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+        android:textSize="18sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -331,12 +331,15 @@ public class AmigosFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 groupname = charSequence.toString();
-                if (groupname != null) {
+                Log.d("NAMASTE group name", String.valueOf(groupname.length()));
+                if (groupname.length() > 1 && uploadPhoto.getDrawable() != null) {
                     saveGroupBtn.setEnabled(true);
                     saveGroupBtn.setVisibility(View.VISIBLE);
-                } else if (groupname == null) {
+                } else{
                     saveGroupBtn.setEnabled(false);
                     saveGroupBtn.setVisibility(View.INVISIBLE);
+                    Log.d("NAMASTE ", "entrou");
+
                 }
             }
 
@@ -382,7 +385,7 @@ public class AmigosFragment extends Fragment {
                                 groupkey = mRef.push().getKey();
                                 mRefGroups.child(groupkey).setValue(grouptosave);
                                 dialog.dismiss();
-                                viewPager.setCurrentItem(1);
+                                viewPager.setCurrentItem(2);
 
                                 Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
 
@@ -495,6 +498,19 @@ public class AmigosFragment extends Fragment {
             uploadPhoto.setImageBitmap(thumbnail);
             Toast.makeText(getActivity(), "Image Saved!", Toast.LENGTH_SHORT).show();
         }
+
+        Log.d("NAMASTE group name", String.valueOf(groupname.length()));
+
+        if (groupname.length() > 1 && uploadPhoto.getDrawable() != null) {
+            saveGroupBtn.setEnabled(true);
+            saveGroupBtn.setVisibility(View.VISIBLE);
+        } else{
+            saveGroupBtn.setEnabled(false);
+            saveGroupBtn.setVisibility(View.INVISIBLE);
+            Log.d("NAMASTE ", "entrou");
+
+        }
+
     }
 
 }

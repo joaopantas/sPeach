@@ -16,7 +16,6 @@
         android:layout_alignParentTop="true"
         android:clickable="true"
         android:orientation="horizontal"
-        android:background="@drawable/grey_background_border"
         >
 
         <!--com.facebook.login.widget.ProfilePictureView

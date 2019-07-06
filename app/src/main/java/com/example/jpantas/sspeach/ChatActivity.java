@@ -75,6 +75,7 @@ public class ChatActivity extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
     ArrayList<String> chat_messages;
     int tamanho;
+    HashMap<String, Boolean> seenMembers;
 
 
     @Override
@@ -153,8 +154,10 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
+        //set seen as true for current user and opened chat
+        mRefChats.child(mChatId).child("seen/"+mCurrentUserId).setValue(true);
 
-
+        //send messages button
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -227,6 +230,7 @@ public class ChatActivity extends AppCompatActivity {
     private void sendMessage(){
 
         String message = messageTxt.getText().toString();
+        seenMembers = new HashMap<>();
 
         if (!TextUtils.isEmpty(message)){
 
@@ -238,7 +242,6 @@ public class ChatActivity extends AppCompatActivity {
 
             Map messageMap = new HashMap();
             messageMap.put("message", message);
-            messageMap.put("seen", false);
             messageMap.put("from", mEncCurrentUserId);
             String currentDate = DateFormat.getDateTimeInstance().format(new Date());
             messageMap.put("time", currentDate);
@@ -252,6 +255,30 @@ public class ChatActivity extends AppCompatActivity {
                 public void onComplete(@Nullable final DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
 
                 messageTxt.getText().clear();
+
+                mRefChats.child(mChatId).child("seen").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        for (DataSnapshot snap : dataSnapshot.getChildren()) {
+
+                            if(snap.getKey().equals(mCurrentUserId)){
+                                seenMembers.put(snap.getKey(), true);
+                            }else{
+                                seenMembers.put(snap.getKey(), false);
+                            }
+                        }
+
+                        mRefChats.child(mChatId).child("seen").setValue(seenMembers);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
 
                 mRefMessages.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

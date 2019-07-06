@@ -3,6 +3,8 @@ package Fragment;
 import android.app.ActionBar;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -84,6 +86,7 @@ public class PublicChatsFragment extends Fragment {
     Message new_message;
     HashMap<String, String> encrypted_ids;
     HashMap<String,String> members;
+    HashMap<String, Boolean> seenMembers;
     private List<String> all_themes_subjects, chat_themes_subjects;
 
     @Nullable
@@ -100,6 +103,7 @@ public class PublicChatsFragment extends Fragment {
         mRefFriends = mFirebaseDatabase.getReference("Friends");
         mRefThemes = mFirebaseDatabase.getReference("Themes");
         mRefUsers = mFirebaseDatabase.getReference("Users");
+        mRefMessages = mFirebaseDatabase.getReference("Messages");
 
         mAuth = FirebaseAuth.getInstance();
         mCurrentUserId = mAuth.getCurrentUser().getUid();
@@ -160,6 +164,7 @@ public class PublicChatsFragment extends Fragment {
                 options) {
             @Override
             protected void onBindViewHolder(@NonNull final PublicChatsViewHolder holder, final int position, @NonNull final PublicChat model) {
+                final String chatid = getRef(position).getKey();
 
                 mRefUsers.child(model.getCreator()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -169,10 +174,15 @@ public class PublicChatsFragment extends Fragment {
                         Log.d("NAMASTE members", model.getMembers().toString());
                         Log.d("NAMASTE member", model.getMembers().get(mCurrentUserId) + " ");
 
-                        if(model.getMembers().get(mCurrentUserId).equals("false")) {
+                        if (model.getEncryptedid().size()>=model.getSize()){
+                            holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(), "true")), String.valueOf(model.getSize()), "FULL");
+                        }else if(model.getMembers().get(mCurrentUserId).equals("false")) {
                             holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(),"true")), String.valueOf(model.getSize()), "JOIN");
+                        }else if(model.getMembers().get(mCurrentUserId).equals("true") && model.getSeen().get(mCurrentUserId).equals(true)){
+                            holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(), "true")), String.valueOf(model.getSize()), "LEAVE");
                         }else{
-                            holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(),"true")), String.valueOf(model.getSize()), "LEAVE");
+                            holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(), "true")), String.valueOf(model.getSize()), "LEAVE");
+                            holder.getLastMessage().setTypeface(null, Typeface.BOLD);
                         }
                     }
 
@@ -191,7 +201,10 @@ public class PublicChatsFragment extends Fragment {
                         //open the chat that is of interest to user (lapit)
                         final Intent intent = new Intent(getActivity(), PublicChatActivity.class);
 
-                        if(model.getMembers().get(mCurrentUserId).equals("true")) {
+                        if(model.getEncryptedid().size() >= model.getSize()){
+                            Toast.makeText(getActivity(), "The chat is already full", Toast.LENGTH_LONG).show();
+                        }
+                        else if(model.getMembers().get(mCurrentUserId).equals("true")) {
 
                             intent.putExtra("chatid", getRef(position).getKey());
                             intent.putExtra("groupname", "public");
@@ -200,7 +213,6 @@ public class PublicChatsFragment extends Fragment {
                             //TODO change this else with unable to write message in chatactivity
                         }else{
                             Toast.makeText(getActivity(), "You need to join the chat in order to check its status", Toast.LENGTH_LONG).show();
-
                         }
                     }
                 });
@@ -210,8 +222,10 @@ public class PublicChatsFragment extends Fragment {
                     public void onClick(View view) {
                         final Intent intent = new Intent(getActivity(), PublicChatActivity.class);
 
-                        final String chatid = getRef(position).getKey();
-                        if(model.getMembers().get(mCurrentUserId).equals("false")) {
+                        if(model.getEncryptedid().size() >= model.getSize()){
+                            Toast.makeText(getActivity(), "The chat is already full", Toast.LENGTH_LONG).show();
+                        }
+                        else if(model.getMembers().get(mCurrentUserId).equals("false")) {
 
                             mRefChats.child(chatid).child("members/"+mCurrentUserId).setValue("true").addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -301,6 +315,7 @@ public class PublicChatsFragment extends Fragment {
         chatTheme = d.findViewById(R.id.themeTxt);
         static_progres = -1;
         members = new HashMap<>();
+        seenMembers = new HashMap<>();
 
         //listener for theme editing
         chatTopic.addTextChangedListener(new TextWatcher() {
@@ -359,12 +374,14 @@ public class PublicChatsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 number_members = (int) dataSnapshot.getChildrenCount();
                 Log.d("NAMASTE NUMBER MEMBERS", String.valueOf(number_members));
-                seekBar.setMax(number_members);
+                seekBar.setMax(number_members + 1);
 
                 members.put(mCurrentUserId,"true");
+                seenMembers.put(mCurrentUserId, true);
                 for (DataSnapshot snap : dataSnapshot.getChildren()) {
                     //add keys of friends to array
                     members.put(snap.getKey(), "false");
+                    seenMembers.put(snap.getKey(), false);
                 }
 
             }
@@ -394,11 +411,11 @@ public class PublicChatsFragment extends Fragment {
                 new_chat.setEncryptedid(encrypted_ids);
                 new_chat.setCreator(mCurrentUserId);
                 new_chat.setSize(number_selected_members);
+                new_chat.setSeen(seenMembers);
 
                 new_message = new Message();
                 new_message.setFrom(all_themes_subjects.get(memberNumber));
                 new_message.setMessage(chatTheme.getText().toString());
-                new_message.setSeen(false);
                 String currentDate = DateFormat.getDateTimeInstance().format(new Date());
                 new_message.setTime(currentDate);
 

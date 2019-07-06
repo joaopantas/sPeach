@@ -21,6 +21,17 @@ public class PublicChatsViewHolder extends RecyclerView.ViewHolder implements Vi
 
     Button joinBtn;
 
+    public TextView getLastMessage() {
+        return lastMessage;
+    }
+
+    public void setLastMessage(TextView lastMessage) {
+        this.lastMessage = lastMessage;
+    }
+
+    TextView lastMessage;
+
+
     public PublicChatsViewHolder(View itemView) {
         super(itemView);
         v = itemView;
@@ -28,11 +39,14 @@ public class PublicChatsViewHolder extends RecyclerView.ViewHolder implements Vi
 
         joinBtn = itemView.findViewById(R.id.joinBtn);
         joinBtn.setOnClickListener(this);
+
+        lastMessage = itemView.findViewById(R.id.message);
     }
 
     public void setItemClickListener(View.OnClickListener clickListener) {
         this.itemClickListener = itemClickListener;
     }
+
 
     public void setChat(Context c, String message, String creator, String topic, String activeMembers, String watchMembers, String btnTxt ) {
         TextView messageTxt = v.findViewById(R.id.message);

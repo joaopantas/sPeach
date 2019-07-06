@@ -68,6 +68,7 @@ public class PublicChatActivity extends AppCompatActivity {
     int tamanho, memberNumber;
     private List<String> all_themes_subjects, chat_themes_subjects;
     Random random;
+    HashMap<String, Boolean> seenMembers;
 
 
     @Override
@@ -192,14 +193,15 @@ public class PublicChatActivity extends AppCompatActivity {
 
         }
 
+        //set seen as true for current user and opened chat
+        mRefPublicChats.child(mChatId).child("seen/"+mCurrentUserId).setValue(true);
+
         mRefPublicChats.child(mChatId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 chatname = dataSnapshot.child("topic").getValue().toString();
+                //set action bar title
                 actionBar.setTitle(chatname);
-                //mTitleView = (TextView) findViewById(R.id.custom_bar_title);
-                Log.d("NAMASTE NOME", chatname);
-                //mTitleView.setText(chatname);
             }
 
             @Override
@@ -207,6 +209,8 @@ public class PublicChatActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
@@ -280,6 +284,7 @@ public class PublicChatActivity extends AppCompatActivity {
 
         String message = messageTxt.getText().toString();
 
+        seenMembers = new HashMap<>();
         if (!TextUtils.isEmpty(message)){
 
             //String current_user_ref = "Messages/" + mCurrentUserId + "/" + mChatId ;
@@ -290,20 +295,44 @@ public class PublicChatActivity extends AppCompatActivity {
 
             Map messageMap = new HashMap();
             messageMap.put("message", message);
-            messageMap.put("seen", false);
             messageMap.put("from", mEncCurrentUserId);
             String currentDate = DateFormat.getDateTimeInstance().format(new Date());
             messageMap.put("time", currentDate);
-
             Map messageUserMap = new HashMap();
             //messageUserMap.put(current_user_ref + "/" + push_id, messageMap);
             messageUserMap.put(chat_user_ref + "/" +  push_id, messageMap);
+
+
+
 
             mRef.updateChildren(messageUserMap, new DatabaseReference.CompletionListener() {
                 @Override
                 public void onComplete(@Nullable final DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
 
                 messageTxt.getText().clear();
+
+                mRefPublicChats.child(mChatId).child("seen").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        for (DataSnapshot snap : dataSnapshot.getChildren()) {
+
+                            if(snap.getKey().equals(mCurrentUserId)){
+                                seenMembers.put(snap.getKey(), true);
+                            }else{
+                                seenMembers.put(snap.getKey(), false);
+                            }
+                        }
+
+                        mRefPublicChats.child(mChatId).child("seen").setValue(seenMembers);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
 
                 mRefMessages.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

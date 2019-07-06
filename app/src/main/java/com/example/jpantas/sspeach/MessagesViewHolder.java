@@ -26,6 +26,8 @@ public class MessagesViewHolder extends RecyclerView.ViewHolder implements View.
     public void setMessage(Context c, String username, String text) {
 
         RelativeLayout relativeLayout = v.findViewById(R.id.balloon);
+        RelativeLayout relativeLayout_2 = v.findViewById(R.id.single_message_view);
+
         TextView user_name = v.findViewById(R.id.username);
          /*RelativeLayout.LayoutParams params_1 =
                 new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -46,6 +48,8 @@ public class MessagesViewHolder extends RecyclerView.ViewHolder implements View.
         message_text.setLayoutParams(params_2);*/
 
          relativeLayout.setBackgroundResource(0);
+         //relativeLayout_2.setPadding(250,10,10,10);
+         relativeLayout_2.setPaddingRelative(100,10,0,10);
 
         RelativeLayout.LayoutParams params_2 =
                 new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -54,7 +58,7 @@ public class MessagesViewHolder extends RecyclerView.ViewHolder implements View.
         TextView message_text = v.findViewById(R.id.message_text);
         message_text.setLayoutParams(params_2);
         message_text.setText(text);
-        message_text.setBackgroundResource(R.drawable.black_background_border);
+        message_text.setBackgroundResource(R.color.colorlightorange);
 
     }
 

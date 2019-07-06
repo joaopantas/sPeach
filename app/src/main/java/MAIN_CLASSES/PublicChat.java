@@ -57,6 +57,16 @@ public class PublicChat {
 
     HashMap<String,String> members;
 
+    public HashMap<String, Boolean> getSeen() {
+        return seen;
+    }
+
+    public void setSeen(HashMap<String, Boolean> seen) {
+        this.seen = seen;
+    }
+
+    HashMap<String,Boolean> seen;
+
     public HashMap<String, String> getEncryptedid() {
         return encryptedid;
     }

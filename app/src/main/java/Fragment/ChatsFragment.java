@@ -2,6 +2,7 @@ package Fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -34,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -86,8 +88,6 @@ public class ChatsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        //TODO show only my chats
-        //Query query = mRef.child(chatid).;
         Query query = mRef.orderByChild("members/"+mCurrentUserId).equalTo(true);
 
         FirebaseRecyclerOptions<Chat> options =
@@ -100,18 +100,18 @@ public class ChatsFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull final ChatsViewHolder holder, final int position, @NonNull final Chat model) {
 
-                //TODO add number of members in a chat
                 chatid = getRef(position).getKey();
-                Log.d("NAMASTE chat id", chatid );
 
                 mRefMessages.child(chatid).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Log.d("NAMASTE COUNT", String.valueOf(dataSnapshot.getChildrenCount()));
 
                         messages_number = (int) dataSnapshot.getChildrenCount();
                         holder.setChat(getApplicationContext(), model.getTopic(), model.getFirst_message(), messages_number);
 
+                        if(model.getSeen().get(mCurrentUserId).equals(false)){
+                            holder.getLastMessage().setTypeface(null, Typeface.BOLD);
+                        }
                     }
 
                     @Override

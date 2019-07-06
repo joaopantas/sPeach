@@ -12,10 +12,21 @@ public class ChatsViewHolder extends RecyclerView.ViewHolder implements View.OnC
     View v;
     ItemClickListener itemClickListener;
 
+    public TextView getLastMessage() {
+        return lastMessage;
+    }
+
+    public void setLastMessage(TextView lastMessage) {
+        this.lastMessage = lastMessage;
+    }
+
+    TextView lastMessage;
+
     public ChatsViewHolder(View itemView) {
         super(itemView);
         v = itemView;
         itemView.setOnClickListener(this);
+        lastMessage = itemView.findViewById(R.id.message);
     }
 
     public void setItemClickListener(View.OnClickListener clickListener) {

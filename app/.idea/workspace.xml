@@ -12,16 +12,24 @@
   <component name="ChangeListManager">
     <list default="true" id="582e8a67-1b03-4feb-b299-7f69eeb983ae" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fragment/AmigosFragment.java" afterPath="$PROJECT_DIR$/src/main/java/Fragment/AmigosFragment.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fragment/ChatsFragment.java" afterPath="$PROJECT_DIR$/src/main/java/Fragment/ChatsFragment.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fragment/GroupsFragment.java" afterPath="$PROJECT_DIR$/src/main/java/Fragment/GroupsFragment.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fragment/InviteAmigosFragment.java" afterPath="$PROJECT_DIR$/src/main/java/Fragment/InviteAmigosFragment.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fragment/PublicChatsFragment.java" afterPath="$PROJECT_DIR$/src/main/java/Fragment/PublicChatsFragment.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/Chat.java" afterPath="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/Chat.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/PublicChat.java" afterPath="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/PublicChat.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatsViewHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatsViewHolder.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MainActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MainActivity.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ViewPagerAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ViewPagerAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/cell_group.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/cell_group.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MessagesViewHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MessagesViewHolder.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatsViewHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatsViewHolder.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/cell_chat.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/cell_chat.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/cell_public_chat.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/cell_public_chat.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/cell_user.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/cell_user.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/chat_balloon.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/chat_balloon.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/src/main/res/values/colors.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,57 +52,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="PublicChatsFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/PublicChatsFragment.java">
+      <file leaf-file-name="AmigosFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/AmigosFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="174" column="191" lean-forward="false" selection-start-line="174" selection-start-column="191" selection-end-line="174" selection-end-column="191" />
-              <folding>
-                <element signature="class#14609:15318" expanded="false" />
-                <element signature="e#15475#15513#0" expanded="false" />
-                <element signature="e#16934#18012#0" expanded="true" />
-                <element signature="e#17274#17969#0" expanded="true" />
-                <element signature="e#17968#17969#0" expanded="true" />
-                <element signature="e#18011#18012#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_chats.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_chats.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="47">
-              <caret line="13" column="42" lean-forward="false" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+            <state relative-caret-position="122">
+              <caret line="387" column="58" lean-forward="false" selection-start-line="387" selection-start-column="58" selection-end-line="387" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cell_public_chat.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/cell_public_chat.xml">
+      <file leaf-file-name="dialog_newgroup.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/dialog_newgroup.xml">
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="42" column="59" lean-forward="false" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_public_chats.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_public_chats.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+            <state relative-caret-position="214">
+              <caret line="51" column="36" lean-forward="false" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -113,24 +88,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mRefUserChats</find>
-      <find>groupname</find>
-      <find>themes_subjects</find>
-      <find>EditText</find>
-      <find>chatNameSize</find>
-      <find>themeTxt</find>
-      <find>first_message</find>
-      <find>theme</find>
-      <find>chatname</find>
-      <find>chatid</find>
-      <find>topicTxt</find>
-      <find>&quot;joined</find>
-      <find>mRefThemes</find>
-      <find>memberNumber</find>
-      <find>all_themes_subjects</find>
-      <find>mRefUsers</find>
       <find>mCurrentUserId</find>
-      <find>members</find>
       <find>chatac</find>
       <find>mEncCurrentUserId</find>
       <find>setValue</find>
@@ -140,9 +98,26 @@
       <find>actionBar</find>
       <find>getitemp</find>
       <find>speach</find>
-      <find>mRefMessages</find>
       <find>new_message</find>
       <find>watch_members</find>
+      <find>mRefMessages</find>
+      <find>size</find>
+      <find>number_members</find>
+      <find>setse</find>
+      <find>members</find>
+      <find>mRef</find>
+      <find>getch</find>
+      <find>all_themes_subjects</find>
+      <find>seenMembers</find>
+      <find>mChatId</find>
+      <find>seen</find>
+      <find>Userkey</find>
+      <find>users</find>
+      <find>states</find>
+      <find>saveGroupBtn</find>
+      <find>uploadPhoto</find>
+      <find>groupname</find>
+      <find>intent</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -2437,7 +2412,6 @@
         <option value="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/Group.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/GroupsViewHolder.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/src/main/res/drawable/background_border.xml" />
         <option value="$PROJECT_DIR$/src/main/res/drawable/black_background_border.xml" />
         <option value="$PROJECT_DIR$/src/main/res/drawable/grey_background_border.xml" />
@@ -2445,8 +2419,6 @@
         <option value="$PROJECT_DIR$/src/main/res/drawable/orange_background_border.xml" />
         <option value="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MessagesViewHolder.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/chat_balloon.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_chats.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_groups.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_amigos.xml" />
@@ -2456,35 +2428,38 @@
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_chat.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/app_bar_layout.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/cell_friend.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/cell_user.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/res/layout/dialog_newchat.xml" />
         <option value="$PROJECT_DIR$/src/main/res/menu/menu_bottom_navigation.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_public_chats.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/dialog_newpublicchat.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ViewPagerAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/cell_group.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/cell_public_chat.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/PublicChat.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatsViewHolder.java" />
         <option value="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/Chat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatsViewHolder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/MAIN_CLASSES/PublicChat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/cell_public_chat.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/cell_chat.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/Fragment/AmigosFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Fragment/ChatsFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Fragment/InviteAmigosFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ViewPagerAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MainActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Fragment/GroupsFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/cell_group.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/cell_chat.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatsViewHolder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Fragment/ChatsFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/Fragment/PublicChatsFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/cell_user.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MessagesViewHolder.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/chat_balloon.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/Fragment/InviteAmigosFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Fragment/AmigosFragment.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="982" />
+    <option name="x" value="1001" />
+    <option name="width" value="927" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
@@ -2536,7 +2511,19 @@
             <path>
               <item name="app" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="MAIN_CLASSES" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="color" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="app" type="1abcf292:AndroidViewProjectNode" />
@@ -2546,21 +2533,27 @@
             </path>
             <path>
               <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/year_28/sPeach/SpeachApp.jks" />
-    <property name="device.picker.selection" value="Nexus_5X_API_27_2" />
+    <property name="device.picker.selection" value="Nexus_5X_API_25_miguel" />
     <property name="SearchEverywhereHistoryKey" value="bundle&#9;null&#9;null&#10;notifydata&#9;null&#9;null&#10;colororange&#9;PSI&#9;JAVA://com.example.jpantas.sspeach.R.color#colororange&#10;androidx&#9;FILE&#9;file://C:/Users/DANIEL/Documents/GitHub/sPeach/app/src/main/AndroidManifest.xml&#10;StorageReference&#9;null&#9;null" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="Properties" />
     <property name="ExportApk.ApkPath" value="C:\Users\DANIEL\Documents\GitHub\sPeach\app" />
@@ -2770,7 +2763,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2780,17 +2772,17 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.17444444" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36259976" sideWeight="0.83081895" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36602053" sideWeight="0.83081895" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48558247" sideWeight="0.48076922" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15359828" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23603192" sideWeight="0.735768" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16756175" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23261118" sideWeight="0.735768" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12083781" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2847,35 +2839,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="18" column="18" lean-forward="false" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/round_chat_24.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/rounded_button.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/drawable/gradient1.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -2895,23 +2858,6 @@
         <state relative-caret-position="177">
           <caret line="4922" column="39" lean-forward="false" selection-start-line="4922" selection-start-column="28" selection-end-line="4922" selection-end-column="39" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MessagesViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="32" column="42" lean-forward="false" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/chat_balloon.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="16" column="34" lean-forward="false" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -2942,17 +2888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/dialog_newgroup.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="18" column="39" lean-forward="false" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/chat_custom_bar.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
@@ -2979,17 +2914,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="45" lean-forward="false" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_chat.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -3024,25 +2948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/cell_user.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/menu/menu_bottom_navigation.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
@@ -3050,22 +2955,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="258">
           <caret line="13" column="45" lean-forward="false" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MAIN_CLASSES/Chat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -3076,14 +2965,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="24" column="34" lean-forward="false" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatsViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="29" column="34" lean-forward="false" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -3099,91 +2980,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MAIN_CLASSES/PublicChat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-588">
-          <caret line="146" column="104" lean-forward="false" selection-start-line="146" selection-start-column="96" selection-end-line="146" selection-end-column="104" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatsViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/cell_chat.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/3d5b0d48bdb677d8b4f73f231fcc5c5d/jars/classes.jar!/android/support/v4/app/FragmentPagerAdapter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/AmigosFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="241" column="33" lean-forward="false" selection-start-line="241" selection-start-column="33" selection-end-line="241" selection-end-column="33" />
-          <folding>
-            <element signature="e#9654#9655#0" expanded="false" />
-            <element signature="e#9697#9698#0" expanded="false" />
-            <element signature="class#12728:13500" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/InviteAmigosFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="391" column="39" lean-forward="false" selection-start-line="391" selection-start-column="39" selection-end-line="391" selection-end-column="39" />
-          <folding>
-            <element signature="class#4608:8088" expanded="false" />
-            <element signature="e#17607#17608#0" expanded="false" />
-            <element signature="e#17656#17657#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="210" column="0" lean-forward="true" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2046#3429#0" expanded="false" />
-            <element signature="e#3428#3429#0" expanded="false" />
-            <element signature="e#4783#5146#0" expanded="false" />
-            <element signature="e#5145#5146#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3202,7 +3002,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3210,7 +3009,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="52" lean-forward="false" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3221,17 +3019,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/drawable-v24/speach2.png">
       <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
         <state />
       </provider>
     </entry>
@@ -3246,37 +3033,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/ChatsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
-          <caret line="196" column="32" lean-forward="false" selection-start-line="196" selection-start-column="32" selection-end-line="196" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/GroupsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="456" column="35" lean-forward="false" selection-start-line="456" selection-start-column="35" selection-end-line="456" selection-end-column="35" />
-          <folding>
-            <element signature="class#8883:10217" expanded="false" />
-            <element signature="e#14031#18527#0" expanded="false" />
-            <element signature="e#14143#14181#0" expanded="false" />
-            <element signature="e#17218#18321#0" expanded="false" />
-            <element signature="e#17564#18263#0" expanded="false" />
-            <element signature="e#18262#18263#0" expanded="false" />
-            <element signature="e#18320#18321#0" expanded="false" />
-            <element signature="e#18526#18527#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_public_chats.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
+        <state relative-caret-position="714">
           <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
           <folding />
         </state>
@@ -3293,40 +3055,271 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_chats.xml">
-      <provider editor-type-id="android-designer2">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="100" column="16" lean-forward="false" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
+          <folding>
+            <element signature="e#4779#5142#0" expanded="false" />
+            <element signature="e#5141#5142#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
+        <state relative-caret-position="82">
+          <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_chats.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="273">
           <caret line="13" column="42" lean-forward="false" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/color/color_bottom_nav.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MAIN_CLASSES/PublicChat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="67" column="20" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/cell_public_chat.xml">
-      <provider editor-type-id="android-designer2">
+      <provider selected="true" editor-type-id="android-designer2">
         <state />
       </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="23" column="40" lean-forward="false" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatsViewHolder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="42" column="59" lean-forward="false" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="59" />
+        <state relative-caret-position="-295">
+          <caret line="31" column="10" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatsViewHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="14" column="38" lean-forward="false" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+          <folding>
+            <element signature="e#460#461#0" expanded="false" />
+            <element signature="e#516#517#0" expanded="false" />
+            <element signature="e#562#563#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MAIN_CLASSES/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="47" lean-forward="false" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+          <folding>
+            <element signature="e#188#189#0" expanded="false" />
+            <element signature="e#246#247#0" expanded="false" />
+            <element signature="e#278#279#0" expanded="false" />
+            <element signature="e#353#354#0" expanded="false" />
+            <element signature="e#389#390#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/ChatsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="112" column="85" lean-forward="false" selection-start-line="112" selection-start-column="85" selection-end-line="112" selection-end-column="85" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/PublicChatsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="174" column="191" lean-forward="false" selection-start-line="174" selection-start-column="191" selection-end-line="174" selection-end-column="191" />
+        <state relative-caret-position="295">
+          <caret line="286" column="19" lean-forward="false" selection-start-line="286" selection-start-column="19" selection-end-line="286" selection-end-column="19" />
           <folding>
-            <element signature="class#14609:15318" expanded="false" />
-            <element signature="e#15475#15513#0" expanded="false" />
-            <element signature="e#16934#18012#0" expanded="true" />
-            <element signature="e#17274#17969#0" expanded="true" />
-            <element signature="e#17968#17969#0" expanded="true" />
-            <element signature="e#18011#18012#0" expanded="true" />
+            <element signature="e#17031#17069#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/PublicChatActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-946">
+          <caret line="195" column="0" lean-forward="false" selection-start-line="195" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
+          <folding>
+            <element signature="e#5810#6762#0" expanded="false" />
+            <element signature="e#6761#6762#0" expanded="false" />
+            <element signature="e#8343#8493#0" expanded="false" />
+            <element signature="e#8492#8493#0" expanded="false" />
+            <element signature="e#9167#9196#0" expanded="false" />
+            <element signature="e#11729#13650#0" expanded="false" />
+            <element signature="e#13649#13650#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_chat.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/chat_balloon.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/MessagesViewHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="45" column="41" lean-forward="false" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ChatActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/cell_chat.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="34" column="40" lean-forward="false" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/cell_user.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="55" column="32" lean-forward="false" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/jpantas/sspeach/ViewHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/InviteAmigosFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="107" column="51" lean-forward="true" selection-start-line="107" selection-start-column="51" selection-end-line="107" selection-end-column="51" />
+          <folding>
+            <element signature="class#4458:7938" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/GroupsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="147" column="30" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+          <folding>
+            <element signature="class#8925:10259" expanded="false" />
+            <element signature="e#14185#14223#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/dialog_newgroup.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="51" column="36" lean-forward="false" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Fragment/AmigosFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="387" column="58" lean-forward="false" selection-start-line="387" selection-start-column="58" selection-end-line="387" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>

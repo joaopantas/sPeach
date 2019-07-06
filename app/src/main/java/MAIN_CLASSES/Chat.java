@@ -7,6 +7,16 @@ public class Chat {
     String percentage;
     String groupid;
 
+    public HashMap<String, Boolean> getSeen() {
+        return seen;
+    }
+
+    public void setSeen(HashMap<String, Boolean> seen) {
+        this.seen = seen;
+    }
+
+    HashMap<String,Boolean> seen;
+
     public String getFirst_message() {
         return first_message;
     }
