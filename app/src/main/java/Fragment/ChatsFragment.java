@@ -32,6 +32,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -101,6 +102,9 @@ public class ChatsFragment extends Fragment {
             protected void onBindViewHolder(@NonNull final ChatsViewHolder holder, final int position, @NonNull final Chat model) {
 
                 chatid = getRef(position).getKey();
+
+                //subscribe to topic for the first time
+                FirebaseMessaging.getInstance().subscribeToTopic(chatid);
 
                 mRefMessages.child(chatid).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -172,6 +176,9 @@ public class ChatsFragment extends Fragment {
 
                 int position = viewHolder.getAdapterPosition();
                 String chatId = fra.getRef(position).getKey();
+
+                //unsubscribe from topic
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(chatId);
 
                 mRef.child(chatId).child("members").child(mCurrentUserId).removeValue()
                         .addOnSuccessListener(new OnSuccessListener<Void>() {

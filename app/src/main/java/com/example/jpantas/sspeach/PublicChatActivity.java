@@ -41,7 +41,7 @@ import java.util.Map;
 import java.util.Random;
 
 import MAIN_CLASSES.Chat;
-import MAIN_CLASSES.Message;
+import MAIN_CLASSES.MessageText;
 
 public class PublicChatActivity extends AppCompatActivity {
 
@@ -233,15 +233,15 @@ public class PublicChatActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
-        FirebaseRecyclerOptions<Message> options =
-                new FirebaseRecyclerOptions.Builder<Message>()
-                        .setQuery(mRefMessages, Message.class)
+        FirebaseRecyclerOptions<MessageText> options =
+                new FirebaseRecyclerOptions.Builder<MessageText>()
+                        .setQuery(mRefMessages, MessageText.class)
                         .build();
 
-        final FirebaseRecyclerAdapter<Message, MessagesViewHolder> fra = new FirebaseRecyclerAdapter<Message, MessagesViewHolder>(
+        final FirebaseRecyclerAdapter<MessageText, MessagesViewHolder> fra = new FirebaseRecyclerAdapter<MessageText, MessagesViewHolder>(
                 options) {
             @Override
-            protected void onBindViewHolder(@NonNull final MessagesViewHolder holder, final int position, @NonNull final Message model) {
+            protected void onBindViewHolder(@NonNull final MessagesViewHolder holder, final int position, @NonNull final MessageText model) {
 
                 Log.d("NAMASTE from", model.getFrom().toString());
 
@@ -334,6 +334,7 @@ public class PublicChatActivity extends AppCompatActivity {
                     }
                 });
 
+                //scroll to last message exchanged
                 mRefMessages.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -52,10 +52,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -67,7 +69,7 @@ import java.util.Set;
 
 import MAIN_CLASSES.Chat;
 import MAIN_CLASSES.Group;
-import MAIN_CLASSES.Message;
+import MAIN_CLASSES.MessageText;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -75,9 +77,9 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 public class GroupsFragment extends Fragment {
 
     FirebaseDatabase mFirebaseDatabase;
-    DatabaseReference mRefGroups, mRefChats, mRefThemes, mRefMessages;
+    DatabaseReference mRefGroups, mRefChats, mRefThemes, mRefMessages, mRefUsers;
     private List<Group> groups;
-    private List<String> themes_subjects;
+    private List<String> themes_subjects, registrationTokens;
     int row_index = -1;
     RecyclerView mRecyclerView;
     SeekBar seekBar;
@@ -95,10 +97,9 @@ public class GroupsFragment extends Fragment {
     Set<Integer> intSet, encrypted_names_intSet;
     int counter, size, lastClicked, static_progres, chatNameSize, themeSize;
     ImageView iconFAB;
-    Message new_message;
-
-    String creator, first_message, topicTxt;
+    String creator, first_message, topicTxt, token;
     HashMap<String, Boolean> seenMembers;
+    MessageText new_message;
 
     Boolean clicked;
     public GroupsFragment() {
@@ -111,15 +112,16 @@ public class GroupsFragment extends Fragment {
         //TODO limit of 15 letters
         View rootView = inflater.inflate(R.layout.fragment_groups, container, false);
 
-        //TODO read groups images
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mRefGroups = mFirebaseDatabase.getReference("Groups");
         mRefChats = mFirebaseDatabase.getReference("Chats");
         mRefThemes = mFirebaseDatabase.getReference("Themes");
         mRefMessages = mFirebaseDatabase.getReference("Messages");
+        mRefUsers = mFirebaseDatabase.getReference("Users");
 
         themes_subjects = new ArrayList<>();
         encrypted_ids = new HashMap<>();
+        registrationTokens = new ArrayList<>();
 
         mAuth = FirebaseAuth.getInstance();
         mCurrent_user_id = mAuth.getCurrentUser().getUid();
@@ -302,7 +304,7 @@ public class GroupsFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 topicTxt = charSequence.toString();
-                if (static_progres > 2 && chatNameSize > 5 && topicTxt.contains("#")) {
+                if (static_progres > 1 && chatNameSize > 5 && topicTxt.contains("#")) {
                     createChatBtn.setEnabled(true);
                     createChatBtn.setVisibility(View.VISIBLE);
                 } else {
@@ -328,7 +330,7 @@ public class GroupsFragment extends Fragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 chatNameSize = charSequence.length();
 
-                if (static_progres > 2 && chatNameSize > 5 && topicTxt.contains("#")) {
+                if (static_progres > 1 && chatNameSize > 5 && topicTxt.contains("#")) {
                     createChatBtn.setEnabled(true);
                     createChatBtn.setVisibility(View.VISIBLE);
                 } else {
@@ -372,7 +374,7 @@ public class GroupsFragment extends Fragment {
                     number_members = number_members + 1;
                 }
                 Log.d("NAMASTE NUMBER MEMBERS", String.valueOf(number_members));
-                seekBar.setMax(number_members);
+                seekBar.setMax(number_members-1);
             }
 
             @Override
@@ -414,20 +416,55 @@ public class GroupsFragment extends Fragment {
 
                         for (DataSnapshot snap : dataSnapshot.getChildren()) {
 
+                            //add to current user to list of members
                             if(ArrayUtils.contains(ints, counter) && members_selected.size() == ints.length-1 && !members_selected.containsKey(mCurrent_user_id)) {
                                 members_selected.put(mCurrent_user_id,true);
                                 encrypted_ids.put(mCurrent_user_id, themes_subjects.get(counter) );
                                 seenMembers.put(mCurrent_user_id,true);
 
+                                //add device token to list of registration tokens
+                                mRefUsers.child(mCurrent_user_id).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        token = dataSnapshot.child("device_token").getValue().toString();
+                                        registrationTokens.add(token);
+                                        Log.d("token", token);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
 
                             }
+                            //add to other users to list of members
                             else if (ArrayUtils.contains(ints, counter) )
                             {
+                                String userKey = snap.getKey();
+
                                 //add keys of wanted users to array
-                                members_selected.put(snap.getKey(),true);
-                                seenMembers.put(snap.getKey(),false);
-                                encrypted_ids.put(snap.getKey(), themes_subjects.get(counter) );
+                                members_selected.put(userKey,true);
+                                seenMembers.put(userKey,false);
+                                encrypted_ids.put(userKey, themes_subjects.get(counter) );
+
+                                //add device token to list of registration tokens
+                                mRefUsers.child(userKey).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        token = dataSnapshot.child("device_token").getValue().toString();
+                                        registrationTokens.add(token);
+                                        Log.d("token", token);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
                             }
+
                             counter = counter + 1;
                         }
 
@@ -438,12 +475,11 @@ public class GroupsFragment extends Fragment {
                         new_chat.setFirst_message(theme.getText().toString());
                         new_chat.setSeen(seenMembers);
 
-                        new_message = new Message();
+                        new_message = new MessageText();
                         new_message.setFrom(encrypted_ids.get(mCurrent_user_id));
                         new_message.setMessage(theme.getText().toString());
                         String currentDate = DateFormat.getDateTimeInstance().format(new Date());
                         new_message.setTime(currentDate);
-
 
                         final String chat_key = mRefChats.push().getKey();
                         final String message_key = mRefMessages.child(chat_key).push().getKey();
@@ -455,12 +491,21 @@ public class GroupsFragment extends Fragment {
                                 mRefMessages.child(chat_key).child(message_key).setValue(new_message).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        d.dismiss();
-                                        Intent intent = new Intent(getActivity(), ChatActivity.class);
-                                        //intent.putExtra("list_members_num", ints);
-                                        intent.putExtra("groupname", groupname);
-                                        intent.putExtra("chatid", chat_key);
-                                        startActivity(intent);
+
+                                        // TODO Subscribe the all the selected members user_keys to the topic.
+                                        FirebaseMessaging.getInstance().subscribeToTopic(chat_key).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Toast.makeText(getApplicationContext(),"New private chat was created",Toast.LENGTH_LONG).show();
+                                                d.dismiss();
+                                                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                                                //intent.putExtra("list_members_num", ints);
+                                                intent.putExtra("groupname", groupname);
+                                                intent.putExtra("chatid", chat_key);
+                                                startActivity(intent);
+                                            }
+                                        });
+
                                     }
                                 });
                             }
@@ -494,7 +539,7 @@ public class GroupsFragment extends Fragment {
             ProgressLabel.setText("Elements: " + progress);
 
             static_progres = progress;
-            if (static_progres > 2 && chatNameSize > 5 && topicTxt.contains("#")) {
+            if (static_progres > 1 && chatNameSize > 5 && topicTxt.contains("#")) {
                 createChatBtn.setEnabled(true);
                 createChatBtn.setVisibility(View.VISIBLE);
             } else {

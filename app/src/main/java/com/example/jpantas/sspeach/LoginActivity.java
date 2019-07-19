@@ -31,6 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,6 +65,29 @@ public class LoginActivity extends AppCompatActivity {
         DBuser = new User();
 
         Intent intent = getIntent();
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("NAMASTE token id", "getInstanceId failed", task.getException());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        String token = task.getResult().getToken();
+
+                        //change device_token every time the session is initiated
+                        //TODO make this change only if it is really needed
+                        //mRef.child(mAuth.getCurrentUser().getUid()).child("device_token").setValue(token);
+
+                        // Log and toast
+                        //String msg = getString(R.string.msg_token_fmt, token);
+                        //Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
 
         //check if user is already logged in
         if (mAuth.getCurrentUser() != null) {

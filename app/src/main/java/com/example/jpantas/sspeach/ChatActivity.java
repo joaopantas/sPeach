@@ -1,6 +1,7 @@
 package com.example.jpantas.sspeach;
 
 import android.app.Activity;
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NavUtils;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +26,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.messaging.FirebaseMessagingService;
+
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.common.util.ArrayUtils;
@@ -37,6 +42,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -47,7 +53,7 @@ import java.util.Map;
 
 import MAIN_CLASSES.Chat;
 import MAIN_CLASSES.Group;
-import MAIN_CLASSES.Message;
+import MAIN_CLASSES.MessageText;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -178,15 +184,15 @@ public class ChatActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
-        FirebaseRecyclerOptions<Message> options =
-                new FirebaseRecyclerOptions.Builder<Message>()
-                        .setQuery(mRefMessages, Message.class)
+        FirebaseRecyclerOptions<MessageText> options =
+                new FirebaseRecyclerOptions.Builder<MessageText>()
+                        .setQuery(mRefMessages, MessageText.class)
                         .build();
 
-        final FirebaseRecyclerAdapter<Message, MessagesViewHolder> fra = new FirebaseRecyclerAdapter<Message, MessagesViewHolder>(
+        final FirebaseRecyclerAdapter<MessageText, MessagesViewHolder> fra = new FirebaseRecyclerAdapter<MessageText, MessagesViewHolder>(
                 options) {
             @Override
-            protected void onBindViewHolder(@NonNull final MessagesViewHolder holder, final int position, @NonNull final Message model) {
+            protected void onBindViewHolder(@NonNull final MessagesViewHolder holder, final int position, @NonNull final MessageText model) {
 
                 Log.d("NAMASTE from", model.getFrom().toString());
 
@@ -249,6 +255,23 @@ public class ChatActivity extends AppCompatActivity {
             Map messageUserMap = new HashMap();
             //messageUserMap.put(current_user_ref + "/" + push_id, messageMap);
             messageUserMap.put(chat_user_ref + "/" +  push_id, messageMap);
+
+            // The topic name can be optionally prefixed with "/topics/".
+            String topic = mChatId;
+
+
+            // See documentation on defining a message payload.
+            /*Message message = android.os.Message.builder()
+                    .putData("user", "850")
+                    .setTopic(topic)
+                    .build();
+
+            // Send a message to the devices subscribed to the provided topic.
+            String response = FirebaseMessaging.getInstance().send(message);
+            // Response is a message ID string.
+            Log.d("Successfully sent message: ", response);
+            */
+
 
             mRef.updateChildren(messageUserMap, new DatabaseReference.CompletionListener() {
                 @Override

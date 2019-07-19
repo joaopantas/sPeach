@@ -45,6 +45,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ import java.util.List;
 import java.util.Random;
 
 import MAIN_CLASSES.Chat;
-import MAIN_CLASSES.Message;
+import MAIN_CLASSES.MessageText;
 import MAIN_CLASSES.PublicChat;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -83,7 +84,7 @@ public class PublicChatsFragment extends Fragment {
     TextView ProgressLabel;
     Random random;
     PublicChat new_chat;
-    Message new_message;
+    MessageText new_message;
     HashMap<String, String> encrypted_ids;
     HashMap<String,String> members;
     HashMap<String, Boolean> seenMembers;
@@ -152,9 +153,7 @@ public class PublicChatsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        //TODO!!!!!!
         Query query = mRefChats.orderByChild("members/"+mCurrentUserId).startAt("false");
-        //Query query = mRefChats.child("members").orderByKey().equalTo(mCurrentUserId);
 
         FirebaseRecyclerOptions<PublicChat> options =
                 new FirebaseRecyclerOptions.Builder<PublicChat>()
@@ -175,15 +174,25 @@ public class PublicChatsFragment extends Fragment {
                         Log.d("NAMASTE members", model.getMembers().toString());
                         Log.d("NAMASTE member", model.getMembers().get(mCurrentUserId) + " ");
 
-                        if (model.getEncryptedid().size()>=model.getSize()){
+                        if (model.getEncryptedid().size()>=model.getSize() && model.getMembers().get(mCurrentUserId).equals("false")){
                             holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(), "true")), String.valueOf(model.getSize()), "FULL");
+                            //unsubscribe from topic
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic(chatid);
+
                         }else if(model.getMembers().get(mCurrentUserId).equals("false")) {
                             holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(),"true")), String.valueOf(model.getSize()), "JOIN");
+                            //unsubscribe to topic for the first time
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic(chatid);
+
                         }else if(model.getMembers().get(mCurrentUserId).equals("true") && model.getSeen().get(mCurrentUserId).equals(true)){
                             holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(), "true")), String.valueOf(model.getSize()), "LEAVE");
+                            //subscribe to topic for the first time
+                            FirebaseMessaging.getInstance().subscribeToTopic(chatid);
                         }else{
                             holder.setChat(getApplicationContext(), model.getFirst_message(), creator, model.getTopic(), String.valueOf(Collections.frequency(model.getMembers().values(), "true")), String.valueOf(model.getSize()), "LEAVE");
                             holder.getLastMessage().setTypeface(null, Typeface.BOLD);
+                            //subscribe to topic for the first time
+                            FirebaseMessaging.getInstance().subscribeToTopic(chatid);
                         }
                     }
 
@@ -202,7 +211,7 @@ public class PublicChatsFragment extends Fragment {
                         //open the chat that is of interest to user (lapit)
                         final Intent intent = new Intent(getActivity(), PublicChatActivity.class);
 
-                        if(model.getEncryptedid().size() >= model.getSize()){
+                        if(model.getEncryptedid().size() >= model.getSize() && model.getMembers().get(mCurrentUserId).equals("false")){
                             Toast.makeText(getActivity(), "The chat is already full", Toast.LENGTH_LONG).show();
                         }
                         else if(model.getMembers().get(mCurrentUserId).equals("true")) {
@@ -278,6 +287,10 @@ public class PublicChatsFragment extends Fragment {
 
                 int position = viewHolder.getAdapterPosition();
                 final String chatId = fra.getRef(position).getKey();
+
+                //unsubscribe from topic
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(chatId);
+
 
                 mRefChats.child(chatId).child("members").child(mCurrentUserId).removeValue()
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -416,7 +429,7 @@ public class PublicChatsFragment extends Fragment {
                 new_chat.setSize(number_selected_members);
                 new_chat.setSeen(seenMembers);
 
-                new_message = new Message();
+                new_message = new MessageText();
                 new_message.setFrom(all_themes_subjects.get(memberNumber));
                 new_message.setMessage(chatTheme.getText().toString());
                 String currentDate = DateFormat.getDateTimeInstance().format(new Date());
@@ -433,12 +446,19 @@ public class PublicChatsFragment extends Fragment {
                         mRefMessages.child(chat_key).child(message_key).setValue(new_message, new DatabaseReference.CompletionListener() {
                             @Override
                             public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                d.dismiss();
-                                Intent intent = new Intent(getActivity(), PublicChatActivity.class);
-                                //intent.putExtra("list_members_num", ints);
-                                intent.putExtra("groupname", "public");
-                                intent.putExtra("chatid", chat_key);
-                                startActivity(intent);
+
+                                FirebaseMessaging.getInstance().subscribeToTopic(chat_key).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        d.dismiss();
+                                        Intent intent = new Intent(getActivity(), PublicChatActivity.class);
+                                        //intent.putExtra("list_members_num", ints);
+                                        intent.putExtra("groupname", "public");
+                                        intent.putExtra("chatid", chat_key);
+                                        startActivity(intent);
+                                    }
+                                });
+
                             }
                         });
 

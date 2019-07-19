@@ -54,6 +54,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -156,6 +157,9 @@ public class AmigosFragment extends Fragment {
 
                 Log.d("NAMASTE user name", getRef(position).getKey());
                 frienduid = getRef(position).getKey();
+
+                //subscribe to topic for the first time
+                FirebaseMessaging.getInstance().subscribeToTopic(frienduid);
 
                 mUsersDatabase.child(frienduid).addValueEventListener(new ValueEventListener() {
                     @Override
@@ -303,7 +307,8 @@ public class AmigosFragment extends Fragment {
 
             }
 
-        }}//end onRequestPermissionsResult
+        }
+    }//end onRequestPermissionsResult
 
     private void newGroup() {
 
@@ -436,7 +441,7 @@ public class AmigosFragment extends Fragment {
                                 groupkey = mRef.push().getKey();
                                 mRefGroups.child(groupkey).setValue(grouptosave);
                                 dialog.dismiss();
-                                viewPager.setCurrentItem(1);
+                                viewPager.setCurrentItem(2);
 
                                 Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
 
