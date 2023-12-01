@@ -1,1 +1,1 @@
-#Chat app that enables free speech.
+# Chat app that enables free speech.
